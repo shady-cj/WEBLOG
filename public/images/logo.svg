@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg" xmlns:bx="https://boxy-svg.com">
+  <defs>
+    <style bx:fonts="Bigshot One">@import url(https://fonts.googleapis.com/css2?family=Bigshot+One%3Aital%2Cwght%400%2C400&amp;display=swap);</style>
+  </defs>
+  <text style="fill: rgb(51, 51, 51); font-family: &quot;Bigshot One&quot;; font-size: 99px; font-weight: 700; stroke: rgb(151, 199, 191); white-space: pre;" x="81.556" y="168.444" dx="-26.349 -16.939 -15.056 -27.604 -20.075 -18.194" dy="156.212 -0.628 0 -0.628 -1.255">WEBLOG</text>
+  <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 26.3px;" x="161.23" y="175.972">.</text>
+  <text style="fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 26.3px; stroke-opacity: 0.16; white-space: pre;" x="252.196" y="179.736"> </text>
+  <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 26.3px;" x="270.389" y="198.557">.</text>
+  <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 26.3px;" x="587.829" y="158.407">.</text>
+  <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 26.3px;" x="540.151" y="196.048">.</text>
+  <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 26.3px;" x="516.311" y="189.774">.</text>
+  <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 26.3px;" x="510.665" y="191.656"> </text>
+  <text style="white-space: pre; fill: rgb(51, 51, 51); font-family: Arial, sans-serif; font-size: 26.3px;" x="509.41" y="189.774"> </text>
+</svg>

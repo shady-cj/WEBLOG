@@ -1,6 +1,12 @@
 body {
-  color: red;
-  background-color: blue;
-  font-size: 50px;
+    color: red;
+    background-color: blue;
+    font-size: 50px;
 }
 /*# sourceMappingURL=index.css.map */
+
+a:active {
+    border: none !important;
+    outline: none !important;
+    box-shadow: none !important;
+}
