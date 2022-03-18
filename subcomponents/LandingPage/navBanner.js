@@ -39,6 +39,7 @@ const navBanner = () => {
                 h="80px"
                 as="nav"
                 position="fixed"
+                zIndex="5"
                 top="0px"
                 left="0px"
                 width="100%"
@@ -64,6 +65,9 @@ const navBanner = () => {
                                     textDecor: "none",
                                     border: "none",
                                 }}
+                                _focus={{
+                                    border: "none",
+                                }}
                                 mr="1rem"
                             >
                                 Sign In
@@ -83,6 +87,9 @@ const navBanner = () => {
                                 p="0.5rem 01rem"
                                 _hover={{
                                     textDecor: "none",
+                                    border: "none",
+                                }}
+                                _focus={{
                                     border: "none",
                                 }}
                             >
