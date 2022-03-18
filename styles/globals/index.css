@@ -9,4 +9,5 @@ a:active {
     border: none !important;
     outline: none !important;
     box-shadow: none !important;
+    color: rgb(247, 232, 211, 0.7);
 }

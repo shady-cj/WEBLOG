@@ -1,6 +1,14 @@
 import React from "react";
-import Image from "next/image";
-import { Heading, Text, Button, Link, Icon, Hide } from "@chakra-ui/react";
+// import Image from "next/image";
+import {
+    Heading,
+    Image,
+    Text,
+    Button,
+    Link,
+    Icon,
+    Hide,
+} from "@chakra-ui/react";
 import NextLink from "next/link";
 import { Box, Flex, Center } from "@chakra-ui/layout";
 import { HStack } from "@chakra-ui/react";
@@ -146,6 +154,38 @@ const navBanner = () => {
                         </NextLink>
                     </HStack>
                 </Flex>
+            </Flex>
+            <Flex
+                h="100%"
+                align="center"
+                // flexDirection={{ md: "column", lg: "row" }}
+                justify="space-between"
+                position="relative"
+                backgroundColor="primary.100"
+            >
+                <Box flex="1" textAlign="center">
+                    <Heading>Welcome to WEBLOG</Heading>
+                </Box>
+
+                <Hide below="md">
+                    <Image
+                        mt="4.5rem"
+                        // borderRadius="full"
+                        height="430px"
+                        width="600px"
+                        src="/images/usplasharch.jpg"
+                        alt="Architecture"
+                        flex="1"
+                    />
+                    <Box
+                        position="absolute"
+                        top="0"
+                        right="0"
+                        width="50%"
+                        backgroundColor="rgb(247, 232, 211,0.1)"
+                        bottom="0"
+                    ></Box>
+                </Hide>
             </Flex>
         </Box>
     );
