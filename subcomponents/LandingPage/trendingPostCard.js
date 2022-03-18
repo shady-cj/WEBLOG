@@ -10,8 +10,9 @@ const trendingPostCard = ({ name, title, date }) => {
                     <Text
                         as="span"
                         fontSize="sm"
-                        fontWeight="normal"
+                        fontWeight="bold"
                         ml="0.6rem"
+                        fontFamily="Cormorant SC"
                     >
                         {name}
                     </Text>
@@ -22,7 +23,7 @@ const trendingPostCard = ({ name, title, date }) => {
                     </Text>
                 </Box>
                 <Box>
-                    <Text fontSize="xs" color="neutrals.700">
+                    <Text fontSize="xs" color="neutrals.600" fontWeight="600">
                         {date}
                     </Text>
                 </Box>

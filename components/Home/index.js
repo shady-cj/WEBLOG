@@ -7,6 +7,8 @@ import {
     GridItem,
     Container,
     Icon,
+    Hide,
+    Show,
     Box,
 } from "@chakra-ui/react";
 import TrendingPostCard from "../../subcomponents/LandingPage/trendingPostCard";
@@ -65,7 +67,12 @@ const Home = () => {
             <NavBanner />
             <Box py="4rem" borderBottom="1px" borderColor="neutrals.200">
                 <Container p="0 4rem">
-                    <Heading as="h2" size="xs" fontWeight="semibold">
+                    <Heading
+                        as="h2"
+                        size="xs"
+                        fontWeight="normal"
+                        fontFamily="Dangrek"
+                    >
                         <Box
                             display="inline-flex"
                             alignItems="center"
@@ -81,7 +88,15 @@ const Home = () => {
                         </Box>
                         TRENDING ON WEBLOG
                     </Heading>
-                    <Grid mt="1.5rem" templateColumns="repeat(3, 1fr)" gap={5}>
+                    <Grid
+                        mt="1.5rem"
+                        templateColumns={{
+                            lg: "repeat(3, 1fr)",
+                            md: "repeat(2,1fr)",
+                            sm: "repeat(1,1fr)",
+                        }}
+                        gap={5}
+                    >
                         {data.map((entry) => {
                             return <TrendingPostCard {...entry} />;
                         })}
@@ -89,23 +104,32 @@ const Home = () => {
                 </Container>
             </Box>
 
+            <Show below="lg">
+                <Box py="4rem" borderBottom="1px" borderColor="neutrals.200">
+                    <Container p="0 4rem">
+                        <DiscoverMore />
+                    </Container>
+                </Box>
+            </Show>
             <Box>
                 <Container p="0 4rem">
                     <Grid mt="3rem" templateColumns="repeat(3, 1fr)" gap={5}>
-                        <GridItem width="100%" colSpan="2">
+                        <GridItem width="100%" colSpan={{ xs: "3", lg: "2" }}>
                             {data.map((entry) => {
                                 return <BlogPostCard {...entry} />;
                             })}
                         </GridItem>
-                        <GridItem
-                            width="100%"
-                            h="100px"
-                            colSpan="1"
-                            position="sticky"
-                            top="110px"
-                        >
-                            <DiscoverMore />
-                        </GridItem>
+                        <Hide below="lg">
+                            <GridItem
+                                width="100%"
+                                h="100px"
+                                colSpan="1"
+                                position="sticky"
+                                top="110px"
+                            >
+                                <DiscoverMore />
+                            </GridItem>
+                        </Hide>
                     </Grid>
                 </Container>
             </Box>

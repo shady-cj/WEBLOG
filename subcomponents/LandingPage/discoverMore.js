@@ -36,6 +36,7 @@ const discoverMore = () => {
                 textTransform="uppercase"
                 fontWeight="semibold"
                 mb="2rem"
+                fontFamily="Dangrek"
                 color="neutrals.800"
             >
                 Discover more of what matters to you

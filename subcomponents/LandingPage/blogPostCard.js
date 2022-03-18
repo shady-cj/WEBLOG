@@ -22,7 +22,8 @@ const blogPostCard = ({ name, title, text, date }) => {
                         <Text
                             as="span"
                             fontSize="sm"
-                            fontWeight="normal"
+                            fontWeight="bold"
+                            fontFamily="Cormorant SC"
                             ml="0.6rem"
                             noOfLines={1}
                             cursor="pointer"
@@ -68,7 +69,11 @@ const blogPostCard = ({ name, title, text, date }) => {
                     </Box>
                     <Flex align="center" justify="space-between">
                         <Box>
-                            <Text fontSize="xs" color="neutrals.700">
+                            <Text
+                                fontSize="xs"
+                                color="neutrals.600"
+                                fontWeight="600"
+                            >
                                 {date}
                             </Text>
                         </Box>

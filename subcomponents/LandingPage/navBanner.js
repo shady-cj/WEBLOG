@@ -1,6 +1,6 @@
 import React from "react";
 import Image from "next/image";
-import { Heading, Text, Button, Link } from "@chakra-ui/react";
+import { Heading, Text, Button, Link, Icon, Hide } from "@chakra-ui/react";
 import NextLink from "next/link";
 import { Box, Flex, Center } from "@chakra-ui/layout";
 import { HStack } from "@chakra-ui/react";
@@ -39,6 +39,7 @@ const navBanner = () => {
                 h="80px"
                 as="nav"
                 position="fixed"
+                align="center"
                 zIndex="5"
                 top="0px"
                 left="0px"
@@ -49,42 +50,89 @@ const navBanner = () => {
                 transition="0.4s ease-in"
             >
                 <Center w="200px" pb="20px">
-                    <Image
-                        src="/images/logo.svg"
-                        height={150}
-                        width={150}
-                        alt="logo"
-                    />
+                    <Icon
+                        viewBox="0 0 500 500"
+                        width={{ xs: "40", md: "60" }}
+                        height={{ xs: "40", md: "60" }}
+                        mb={{ sm: "0.5rem", md: "1rem" }}
+                        ml={{ sm: "0.4rem", md: "1rem" }}
+                    >
+                        <text
+                            style={{
+                                fill: "rgb(51, 51, 51)",
+                                fontFamily: "Bigshot One",
+                                fontSize: "99px",
+                                fontWeight: "700",
+                                stroke: `${
+                                    scrolledPast ? "#2a7c6f" : "#f7e8d3"
+                                }`,
+                                whiteSpace: "pre",
+                                transition: "0.4s ease-in",
+                            }}
+                            x="81.556"
+                            y="168.444"
+                            dx="-26.349 -16.939 -15.056 -27.604 -20.075 -18.194"
+                            dy="156.212 -0.628 0 -0.628 -1.255"
+                        >
+                            WEBLOG
+                        </text>
+                    </Icon>
                 </Center>
-                <Flex flex="1" justify="flex-end" align="center" pr="30px">
+                <Flex
+                    flex="1"
+                    justify="flex-end"
+                    align="center"
+                    pr={{ xs: "15px", sm: "30px", md: "50px" }}
+                >
                     <HStack>
-                        <NextLink href="#" style={{ border: "none" }} passHref>
-                            <Link
-                                fontSize="md"
-                                _hover={{
-                                    textDecor: "none",
-                                    border: "none",
-                                }}
-                                _focus={{
-                                    border: "none",
-                                }}
-                                mr="1rem"
+                        <Hide below="sm">
+                            <NextLink
+                                href="#"
+                                style={{ border: "none" }}
+                                passHref
                             >
-                                Sign In
-                            </Link>
-                        </NextLink>
+                                <Link
+                                    _hover={{
+                                        textDecor: "none",
+                                        border: "none",
+                                    }}
+                                    _focus={{
+                                        border: "none",
+                                    }}
+                                    mr={{
+                                        xs: "0.3rem",
+                                        sm: "1rem",
+                                    }}
+                                    fontSize={{
+                                        base: "10px",
+                                        xs: "xs",
+                                        sm: "sm",
+                                    }}
+                                >
+                                    Sign In
+                                </Link>
+                            </NextLink>
+                        </Hide>
+
                         <NextLink href="#" style={{ border: "none" }} passHref>
                             <Link
-                                fontSize="md"
+                                fontSize={{
+                                    base: "10px",
+                                    xs: "sm",
+                                }}
                                 bg={
                                     scrolledPast
                                         ? "secondary.100"
                                         : "default.dark"
                                 }
-                                transition="0.4s ease-in"
-                                borderRadius="3xl"
+                                transition="background-color 0.4s ease-in"
+                                borderRadius={{ base: "2xl", sm: "3xl" }}
                                 color="default.light"
-                                p="0.5rem 01rem"
+                                p={{
+                                    base: "0.25rem 0.9rem",
+                                    sm: "0.3rem 0.8rem",
+                                    md: "0.5rem 1rem",
+                                }}
                                 _hover={{
                                     textDecor: "none",
                                     border: "none",
