@@ -53,6 +53,7 @@ const navBanner = () => {
                 left="0px"
                 width="100%"
                 px="14px"
+                overflow="hidden"
                 bg={scrolledPast ? "default.light" : "primary.100"}
                 ref={fixedHeader}
                 transition="0.4s ease-in"
@@ -162,6 +163,7 @@ const navBanner = () => {
                 justify="space-between"
                 position="relative"
                 backgroundColor="primary.100"
+                overflow="hidden"
             >
                 <Box flex="1" textAlign="center">
                     <Heading>Welcome to WEBLOG</Heading>
@@ -171,7 +173,7 @@ const navBanner = () => {
                     <Image
                         mt="4.5rem"
                         // borderRadius="full"
-                        height="430px"
+                        height="437px"
                         width="600px"
                         src="/images/usplasharch.jpg"
                         alt="Architecture"
