@@ -40,18 +40,16 @@ const authForm = () => {
         <>
             <Box>
                 <Box>
-                    <Center flexDirection="column">
-                        <Box
-                            display="inline-flex"
-                            flexDirection="row"
-                            overflowX="hidden"
-                            border="2px solid"
+                    <Center flexDirection="column" overflowX="hidden">
+                        <Flex
                             width="100%"
+                            transform={`translateX(${-100 * formIndex}%)`}
+                            transition="transform 0.4s ease-in"
                         >
                             {formData.map((data, index) => {
                                 return <FormBox key={index} {...data} />;
                             })}
-                        </Box>
+                        </Flex>
                         <Button
                             mt="4rem"
                             p="1rem 3rem"
@@ -59,7 +57,7 @@ const authForm = () => {
                             bg="secondary.100"
                             _hover={{ bg: "secondary.500" }}
                             onClick={(e) => {
-                                if (formIndex < 1) {
+                                if (formIndex < formData.length - 1) {
                                     setFormIndex(formIndex + 1);
                                     console.log("increment");
                                 } else {

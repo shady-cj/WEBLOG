@@ -41,7 +41,7 @@ const loginPopup = ({ setPopupOpen }) => {
             exit="exit"
         >
             <MotionBox
-                w="50%"
+                w={{ sm: "100%", md: "65%", lg: "50%" }}
                 height="100%"
                 bg="default.light"
                 boxShadow="-1px 1px 8px 2px rgba(0,0,0,0.2)"
