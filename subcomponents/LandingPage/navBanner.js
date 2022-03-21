@@ -13,7 +13,8 @@ import NextLink from "next/link";
 import { Box, Flex, Center } from "@chakra-ui/layout";
 import { HStack } from "@chakra-ui/react";
 import { useEffect, useRef, useState } from "react";
-const navBanner = () => {
+
+const navBanner = ({ setPopupOpen }) => {
     const fixedHeader = useRef(null);
     const Banner = useRef(null);
     const [scrolledPast, setScrolledPast] = useState(false);
@@ -56,7 +57,7 @@ const navBanner = () => {
                 overflow="hidden"
                 bg={scrolledPast ? "default.light" : "primary.100"}
                 ref={fixedHeader}
-                transition="0.4s ease-in"
+                transition="background-color 0.4s ease-in"
             >
                 <Center w="200px" pb="20px">
                     <Icon
@@ -95,53 +96,7 @@ const navBanner = () => {
                 >
                     <HStack>
                         <Hide below="sm">
-                            <NextLink
-                                href="#"
-                                style={{ border: "none" }}
-                                passHref
-                            >
-                                <Link
-                                    _hover={{
-                                        textDecor: "none",
-                                        border: "none",
-                                    }}
-                                    _focus={{
-                                        border: "none",
-                                    }}
-                                    mr={{
-                                        xs: "0.3rem",
-                                        sm: "1rem",
-                                    }}
-                                    fontSize={{
-                                        base: "10px",
-                                        xs: "xs",
-                                        sm: "sm",
-                                    }}
-                                >
-                                    Sign In
-                                </Link>
-                            </NextLink>
-                        </Hide>
-
-                        <NextLink href="#" style={{ border: "none" }} passHref>
                             <Link
-                                fontSize={{
-                                    base: "10px",
-                                    xs: "sm",
-                                }}
-                                bg={
-                                    scrolledPast
-                                        ? "secondary.100"
-                                        : "default.dark"
-                                }
-                                transition="background-color 0.4s ease-in"
-                                borderRadius={{ base: "2xl", sm: "3xl" }}
-                                color="default.light"
-                                p={{
-                                    base: "0.25rem 0.9rem",
-                                    sm: "0.3rem 0.8rem",
-                                    md: "0.5rem 1rem",
-                                }}
                                 _hover={{
                                     textDecor: "none",
                                     border: "none",
@@ -149,10 +104,52 @@ const navBanner = () => {
                                 _focus={{
                                     border: "none",
                                 }}
+                                mr={{
+                                    xs: "0.3rem",
+                                    sm: "1rem",
+                                }}
+                                fontSize={{
+                                    base: "10px",
+                                    xs: "xs",
+                                    sm: "sm",
+                                }}
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    setPopupOpen(true);
+                                }}
                             >
-                                Get Started
+                                Sign In
                             </Link>
-                        </NextLink>
+                        </Hide>
+
+                        <Link
+                            fontSize={{
+                                base: "10px",
+                                xs: "sm",
+                            }}
+                            onClick={(e) => {
+                                e.preventDefault();
+                                setPopupOpen(true);
+                            }}
+                            bg={scrolledPast ? "secondary.100" : "default.dark"}
+                            transition="background-color 0.4s ease-in"
+                            borderRadius={{ base: "2xl", sm: "3xl" }}
+                            color="default.light"
+                            p={{
+                                base: "0.25rem 0.9rem",
+                                sm: "0.3rem 0.8rem",
+                                md: "0.5rem 1rem",
+                            }}
+                            _hover={{
+                                textDecor: "none",
+                                border: "none",
+                            }}
+                            _focus={{
+                                border: "none",
+                            }}
+                        >
+                            Get Started
+                        </Link>
                     </HStack>
                 </Flex>
             </Flex>
