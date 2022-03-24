@@ -23,7 +23,7 @@ const theme = extendTheme({
     },
     breakpoints,
     fonts: {
-        heading: "Adamina",
+        heading: "Sora",
         body: "Open Sans",
     },
     colors: {
@@ -60,6 +60,7 @@ const theme = extendTheme({
             600: "#7a7a7a",
             700: "#626262",
             800: "#494949",
+            900: "#2c2c2c",
         },
     },
 });

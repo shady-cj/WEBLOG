@@ -8,11 +8,26 @@ import {
     Link,
     Icon,
     Hide,
+    Box,
+    Flex,
+    Center,
+    HStack,
 } from "@chakra-ui/react";
 import NextLink from "next/link";
-import { Box, Flex, Center } from "@chakra-ui/layout";
-import { HStack } from "@chakra-ui/react";
+
+import { motion } from "framer-motion";
+
 import { useEffect, useRef, useState } from "react";
+
+const MotionText = motion(Box);
+const appearIn = {
+    visible: {
+        opacity: 1,
+        transform: "scale(1)",
+        transition: { delay: 0.8 },
+    },
+    hidden: { opacity: 0, transform: "scale(0)" },
+};
 
 const navBanner = ({ setPopupOpen }) => {
     const fixedHeader = useRef(null);
@@ -162,9 +177,56 @@ const navBanner = ({ setPopupOpen }) => {
                 backgroundColor="primary.100"
                 overflow="hidden"
             >
-                <Box flex="1" textAlign="center">
-                    <Heading>Welcome to WEBLOG</Heading>
-                </Box>
+                <MotionText
+                    variants={appearIn}
+                    initial="hidden"
+                    animate="visible"
+                    flex="1"
+                    px="2rem"
+                    pt="4rem"
+                >
+                    <Heading
+                        mb="1rem"
+                        as="h1"
+                        fontWeight="normal"
+                        color="neutrals.900"
+                        fontFamily="Dela Gothic One"
+                        fontSize="3.5rem"
+                    >
+                        World Blog
+                    </Heading>
+
+                    <Text
+                        fontSize="1.8rem"
+                        color="neutrals.800"
+                        fontFamily="Cormorant SC"
+                        mb="1rem"
+                    >
+                        Discover new experience while Reading, Writing.
+                    </Text>
+                    <Button
+                        background="default.dark"
+                        color="default.light"
+                        p="1.5rem 2.5rem"
+                        borderRadius="full"
+                        fontFamily="Montserrat"
+                        _hover={{
+                            background: "default.dark",
+                        }}
+                        _active={{
+                            background: "default.dark",
+                            opacity: "0.9",
+                        }}
+                        _focus={{
+                            border: "none",
+                        }}
+                        onClick={(e) => {
+                            setPopupOpen(true);
+                        }}
+                    >
+                        Start Blogging
+                    </Button>
+                </MotionText>
 
                 <Hide below="md">
                     <Image
