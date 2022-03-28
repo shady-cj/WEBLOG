@@ -48,6 +48,27 @@ const homePage = ({ children }) => {
             text: "I couldn’t say all I wanted in my National Geographic story about vaccine injuries, so here’s the rest of the story",
             date: " · Mar 8",
         },
+        {
+            key: 7,
+            name: "Jessica Wildfire",
+            title: "Vladimir Putin Has Already Won, but Nobody Wants to Admit It",
+            text: "I couldn’t say all I wanted in my National Geographic story about vaccine injuries, so here’s the rest of the story",
+            date: " · Mar 8",
+        },
+        {
+            key: 8,
+            name: "Jessica Wildfire",
+            title: "Vladimir Putin Has Already Won, but Nobody Wants to Admit It",
+            text: "I couldn’t say all I wanted in my National Geographic story about vaccine injuries, so here’s the rest of the story",
+            date: " · Mar 8",
+        },
+        {
+            key: 9,
+            name: "Jessica Wildfire",
+            title: "Vladimir Putin Has Already Won, but Nobody Wants to Admit It",
+            text: "I couldn’t say all I wanted in my National Geographic story about vaccine injuries, so here’s the rest of the story",
+            date: " · Mar 8",
+        },
     ];
     return (
         <HomeWrapper page="home">
@@ -56,7 +77,7 @@ const homePage = ({ children }) => {
                     <Box
                         borderBottom="1px"
                         borderColor="neutrals.300"
-                        mb="1.5rem"
+                        mb="0.5rem"
                     >
                         <Link
                             _hover={{ textDecoration: "none" }}

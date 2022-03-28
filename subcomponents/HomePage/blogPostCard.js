@@ -14,7 +14,7 @@ import {
     Flex,
 } from "@chakra-ui/react";
 
-const blogPostCard = ({ name, title, text, date }) => {
+const blogPostCard = ({ name, title, text, date, bookmark }) => {
     return (
         <Box py="2rem" borderBottom="1px" borderColor="neutrals.300">
             <Grid templateColumns="repeat(4,1fr)" gap={4}>
@@ -43,7 +43,7 @@ const blogPostCard = ({ name, title, text, date }) => {
                         <Heading
                             fontSize={{ lg: "xl", md: "lg", base: "sm" }}
                             as="h3"
-                            lineHeight="22px"
+                            lineHeight="25px"
                             fontWeight="900"
                             mt="0.95rem"
                             mb="0.5rem"
@@ -80,6 +80,14 @@ const blogPostCard = ({ name, title, text, date }) => {
                             </Text>
                         </Flex>
 
+                        <svg
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            class="tn"
+                        ></svg>
+
                         <Icon
                             width="25"
                             height="25"
@@ -87,10 +95,17 @@ const blogPostCard = ({ name, title, text, date }) => {
                             fill="none"
                             cursor="pointer"
                         >
-                            <path
-                                d="M18 2.5a.5.5 0 0 1 1 0V5h2.5a.5.5 0 0 1 0 1H19v2.5a.5.5 0 1 1-1 0V6h-2.5a.5.5 0 0 1 0-1H18V2.5zM7 7a1 1 0 0 1 1-1h3.5a.5.5 0 0 0 0-1H8a2 2 0 0 0-2 2v14a.5.5 0 0 0 .8.4l5.7-4.4 5.7 4.4a.5.5 0 0 0 .8-.4v-8.5a.5.5 0 0 0-1 0v7.48l-5.2-4a.5.5 0 0 0-.6 0l-5.2 4V7z"
-                                fill="#292929"
-                            ></path>
+                            {bookmark ? (
+                                <path
+                                    d="M7.5 3.75a2 2 0 0 0-2 2v14a.5.5 0 0 0 .8.4l5.7-4.4 5.7 4.4a.5.5 0 0 0 .8-.4v-14a2 2 0 0 0-2-2h-9z"
+                                    fill="#000"
+                                ></path>
+                            ) : (
+                                <path
+                                    d="M18 2.5a.5.5 0 0 1 1 0V5h2.5a.5.5 0 0 1 0 1H19v2.5a.5.5 0 1 1-1 0V6h-2.5a.5.5 0 0 1 0-1H18V2.5zM7 7a1 1 0 0 1 1-1h3.5a.5.5 0 0 0 0-1H8a2 2 0 0 0-2 2v14a.5.5 0 0 0 .8.4l5.7-4.4 5.7 4.4a.5.5 0 0 0 .8-.4v-8.5a.5.5 0 0 0-1 0v7.48l-5.2-4a.5.5 0 0 0-.6 0l-5.2 4V7z"
+                                    fill="#292929"
+                                ></path>
+                            )}
                         </Icon>
                     </Flex>
                 </GridItem>

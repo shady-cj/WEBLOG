@@ -89,7 +89,7 @@ const navBanner = ({ setPopupOpen }) => {
                                 fontSize: "99px",
                                 fontWeight: "700",
                                 stroke: `${
-                                    scrolledPast ? "#2a7c6f" : "#f7e8d3"
+                                    scrolledPast ? "#2a7c6f" : "#c6baa9"
                                 }`,
                                 whiteSpace: "pre",
                                 transition: "0.4s ease-in",

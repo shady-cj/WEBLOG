@@ -16,7 +16,6 @@ const homeWrapper = ({ children, page }) => {
                 {children}
                 <LeftBar page={page} />
             </Show>
-            {/* <Box p="4rem">{children}</Box> */}
         </Box>
     );
 };
