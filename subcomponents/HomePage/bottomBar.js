@@ -4,10 +4,10 @@ import { HiOutlineHome, HiHome } from "react-icons/hi";
 import { BsBookmarks, BsBookmarksFill } from "react-icons/bs";
 import { MdOutlineTopic, MdTopic } from "react-icons/md";
 import ExtrasPopup from "./extrasPopup";
-
-import NextLink from "next/link";
+import { useRouter } from "next/router";
 const bottomBar = ({ page }) => {
     const [openUserInfo, setOpenUserInfo] = useState(false);
+    const router = useRouter();
     useEffect(() => {
         const openPopup = (e) => {
             if (
@@ -36,44 +36,34 @@ const bottomBar = ({ page }) => {
                 justify="space-around"
                 zIndex={10}
             >
-                <NextLink href="/" passHref>
-                    <Link _focus={{ outline: "none" }}>
-                        <Icon
-                            // fontWeight="100"
-                            color="neutrals.900"
-                            boxSize="0.55em"
-                            focusable
-                            as={page == "home" ? HiHome : HiOutlineHome}
-                            cursor="pointer"
-                        />
-                    </Link>
-                </NextLink>
-                <NextLink href="/bookmarks" passHref>
-                    <Link _focus={{ outline: "none" }}>
-                        <Icon
-                            color="neutrals.900"
-                            focusable
-                            boxSize="0.48em"
-                            cursor="pointer"
-                            as={
-                                page == "bookmark"
-                                    ? BsBookmarksFill
-                                    : BsBookmarks
-                            }
-                        />
-                    </Link>
-                </NextLink>
-                <NextLink href="/topics" passHref>
-                    <Link _focus={{ outline: "none" }}>
-                        <Icon
-                            color="neutrals.900"
-                            boxSize="0.5em"
-                            as={page == "topic" ? MdTopic : MdOutlineTopic}
-                            focusable
-                            cursor="pointer"
-                        />
-                    </Link>
-                </NextLink>
+                <Icon
+                    // fontWeight="100"
+                    color="neutrals.900"
+                    boxSize="0.55em"
+                    focusable
+                    as={page == "home" ? HiHome : HiOutlineHome}
+                    cursor="pointer"
+                    onClick={() => router.push("/")}
+                />
+
+                <Icon
+                    color="neutrals.900"
+                    focusable
+                    boxSize="0.48em"
+                    cursor="pointer"
+                    as={page == "bookmark" ? BsBookmarksFill : BsBookmarks}
+                    onClick={() => router.push("/bookmarks")}
+                />
+
+                <Icon
+                    color="neutrals.900"
+                    boxSize="0.5em"
+                    as={page == "topic" ? MdTopic : MdOutlineTopic}
+                    focusable
+                    cursor="pointer"
+                    onClick={() => router.push("/topics")}
+                />
+
                 <Avatar
                     size="sm"
                     name="Erinfolami"

@@ -44,18 +44,16 @@ const discoverMore = () => {
             <Wrap>
                 {tags.map((entry, index) => (
                     <WrapItem key={index}>
-                        <NextLink href="#" passHref>
-                            <Tag
-                                variant="outline"
-                                colorScheme="blackAlpha"
-                                size="lg"
-                                p="0.4rem 1rem"
-                                cursor="pointer"
-                                borderRadius="sm"
-                            >
-                                <TagLabel>{entry}</TagLabel>
-                            </Tag>
-                        </NextLink>
+                        <Tag
+                            variant="outline"
+                            colorScheme="blackAlpha"
+                            size="lg"
+                            p="0.4rem 1rem"
+                            cursor="pointer"
+                            borderRadius="sm"
+                        >
+                            <TagLabel>{entry}</TagLabel>
+                        </Tag>
                     </WrapItem>
                 ))}
             </Wrap>

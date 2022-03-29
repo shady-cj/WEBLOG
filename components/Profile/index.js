@@ -96,7 +96,7 @@ const index = ({ type, username }) => {
                         </Text>
                     </Center>
                 </Box>
-                <Box h="1000px">
+                <Box>
                     <SubNavTemplate active={type} navs={navs} />
                 </Box>
             </HomeGrid>

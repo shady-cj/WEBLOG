@@ -3,8 +3,9 @@ import HomeWrapper from "../Container/homeWrapper";
 import HomeGrid from "../Container/homeGrid";
 import { Heading, Box, Button, Flex } from "@chakra-ui/react";
 import SubNavTemplate from "../../subcomponents/HomePage/subNavTemplate";
-import NextLink from "next/link";
+import { useRouter } from "next/router";
 const Story = ({ type }) => {
+    const router = useRouter();
     const navs = [
         {
             title: "Drafts",
@@ -36,29 +37,29 @@ const Story = ({ type }) => {
                     >
                         Your Stories
                     </Heading>
-                    <NextLink href="/new-story" passHref>
-                        <Button
-                            fontFamily="Sora"
-                            background="secondary.100"
-                            color="white"
-                            fontWeight="500"
-                            fontSize="sm"
-                            size="md"
-                            borderRadius="full"
-                            _focus={{
-                                outline: "none",
-                                boxShadow: "none",
-                            }}
-                            _hover={{
-                                background: "secondary.400",
-                            }}
-                            _active={{
-                                background: "secondary.500",
-                            }}
-                        >
-                            Write a story
-                        </Button>
-                    </NextLink>
+
+                    <Button
+                        fontFamily="Sora"
+                        background="secondary.100"
+                        color="white"
+                        fontWeight="500"
+                        fontSize="sm"
+                        size="md"
+                        borderRadius="full"
+                        _focus={{
+                            outline: "none",
+                            boxShadow: "none",
+                        }}
+                        _hover={{
+                            background: "secondary.400",
+                        }}
+                        _active={{
+                            background: "secondary.500",
+                        }}
+                        onClick={() => router.push("/new-story")}
+                    >
+                        Write a story
+                    </Button>
                 </Flex>
 
                 <Box>

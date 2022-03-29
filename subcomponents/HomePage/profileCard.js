@@ -8,8 +8,9 @@ import {
     Heading,
     Button,
 } from "@chakra-ui/react";
-import NextLink from "next/link";
+import { useRouter } from "next/router";
 const profileCard = () => {
+    const router = useRouter();
     return (
         <Box position="sticky" top="10px">
             <Center width="100%">
@@ -53,31 +54,40 @@ const profileCard = () => {
                     </Heading>
 
                     <Flex justify="space-between" w="80%" mb="0.4rem">
-                        <NextLink href="/story/drafts" passHref>
-                            <Text fontSize="sm" cursor="pointer">
-                                Drafts
-                            </Text>
-                        </NextLink>
+                        <Text
+                            fontSize="sm"
+                            cursor="pointer"
+                            onClick={() => router.push("/story/drafts")}
+                        >
+                            Drafts
+                        </Text>
+
                         <Text fontSize="sm" ml="1rem">
                             4
                         </Text>
                     </Flex>
                     <Flex justify="space-between" w="80%" mb="0.4rem">
-                        <NextLink href="/story/published" passHref>
-                            <Text fontSize="sm" cursor="pointer">
-                                Published
-                            </Text>
-                        </NextLink>
+                        <Text
+                            fontSize="sm"
+                            cursor="pointer"
+                            onClick={() => router.push("/story/published")}
+                        >
+                            Published
+                        </Text>
+
                         <Text fontSize="sm" ml="1rem">
                             13
                         </Text>
                     </Flex>
                     <Flex justify="space-between" w="80%">
-                        <NextLink href="/story/trash" passHref>
-                            <Text fontSize="sm" cursor="pointer">
-                                Trash
-                            </Text>
-                        </NextLink>
+                        <Text
+                            fontSize="sm"
+                            cursor="pointer"
+                            onClick={() => router.push("/story/drafts")}
+                        >
+                            Trash
+                        </Text>
+
                         <Text fontSize="sm" ml="1rem">
                             1
                         </Text>

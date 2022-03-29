@@ -14,33 +14,31 @@ import {
     Link,
     Flex,
 } from "@chakra-ui/react";
-import NextLink from "next/link";
+import { useRouter } from "next/router";
 
 const blogPostCard = ({ name, title, text, date, bookmark }) => {
+    const router = useRouter();
     return (
         <Box py="2rem" borderBottom="1px" borderColor="neutrals.300">
             <Grid templateColumns="repeat(4,1fr)" gap={4}>
                 <GridItem colSpan="3">
                     <Flex align="center">
-                        <NextLink href="/Peter" passHref>
-                            {/* <Link display="inline"> */}
-                            <Avatar size="xs" cursor="pointer" />
-                            {/* </Link> */}
-                        </NextLink>
-                        <NextLink href="/Peter" passHref>
-                            {/* <Link display="inline"> */}
-                            <Text
-                                as="span"
-                                fontSize="0.7rem"
-                                fontWeight="600"
-                                mx="0.6rem"
-                                noOfLines={1}
-                                cursor="pointer"
-                            >
-                                {name}
-                            </Text>
-                            {/* </Link> */}
-                        </NextLink>
+                        <Avatar
+                            size="xs"
+                            cursor="pointer"
+                            onClick={() => router.push("/Peter")}
+                        />
+                        <Text
+                            as="span"
+                            fontSize="0.7rem"
+                            fontWeight="600"
+                            mx="0.6rem"
+                            noOfLines={1}
+                            cursor="pointer"
+                            onClick={() => router.push("/Peter")}
+                        >
+                            {name}
+                        </Text>
                         <Text
                             fontSize="xs"
                             color="neutrals.600"
