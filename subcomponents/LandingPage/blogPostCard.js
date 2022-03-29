@@ -59,7 +59,7 @@ const blogPostCard = ({ name, title, text, date }) => {
                     </Box>
                     <Box>
                         <Text
-                            fontSize="lg"
+                            fontSize="md"
                             fontWeight="normal"
                             color="neutrals.700"
                             noOfLines={2}

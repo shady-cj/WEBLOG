@@ -24,7 +24,7 @@ const theme = extendTheme({
     breakpoints,
     fonts: {
         heading: "Sora",
-        body: "Open Sans",
+        body: "Sora",
     },
     colors: {
         default: {

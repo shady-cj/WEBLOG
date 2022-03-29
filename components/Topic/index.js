@@ -53,7 +53,7 @@ const index = ({ type }) => {
     ];
     return (
         <HomeWrapper page="topic">
-            <HomeGrid>
+            <HomeGrid page="topic">
                 <Heading
                     mt={{ lg: "1rem", base: "3rem" }}
                     fontSize={{ base: "xl", lg: "2xl" }}
@@ -117,8 +117,8 @@ const index = ({ type }) => {
                                         }}
                                         _hover={{
                                             background: following
-                                                ? "white"
-                                                : "secondary.100",
+                                                ? "#2a7c6f1a"
+                                                : "secondary.300",
                                         }}
                                         fontWeight="normal"
                                         border={following && "1px"}

@@ -64,7 +64,7 @@ const Bookmarks = ({ type }) => {
     ];
     return (
         <HomeWrapper page={type === "saved" && "bookmark"}>
-            <HomeGrid>
+            <HomeGrid page="bookmark">
                 <Heading
                     mt={{ lg: "1rem", base: "3rem" }}
                     fontSize={{ base: "xl", lg: "2xl" }}

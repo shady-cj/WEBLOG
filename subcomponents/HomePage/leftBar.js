@@ -1,4 +1,13 @@
-import { Flex, VStack, Box, Icon, Avatar, Tooltip } from "@chakra-ui/react";
+import {
+    Flex,
+    VStack,
+    Box,
+    Icon,
+    Avatar,
+    Text,
+    Tooltip,
+    Heading,
+} from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
 import NextLink from "next/link";
 import { HiOutlineHome, HiHome } from "react-icons/hi";
@@ -6,6 +15,7 @@ import { IoNotificationsOutline, IoNotificationsSharp } from "react-icons/io5";
 import { BsBookmarks, BsBookmarksFill } from "react-icons/bs";
 import { RiFileList2Fill, RiFileList2Line } from "react-icons/ri";
 import { MdOutlineTopic, MdTopic } from "react-icons/md";
+import ExtrasPopup from "./extrasPopup";
 
 import { FiEdit } from "react-icons/fi";
 
@@ -64,7 +74,6 @@ const leftBar = ({ page }) => {
                 </NextLink>
             </Box>
             <VStack flex="2" width="100%" spacing={8}>
-                {/* <Tooltip hasArrow label="Home" placement="right"> */}
                 <NextLink href="/" passHref>
                     <Icon
                         color="neutrals.900"
@@ -73,11 +82,10 @@ const leftBar = ({ page }) => {
                         as={page === "home" ? HiHome : HiOutlineHome}
                         cursor="pointer"
                         _hover={{ color: "black" }}
+                        title="Home"
                     />
                 </NextLink>
 
-                {/* </Tooltip> */}
-                {/* <Tooltip hasArrow label="Notifications" placement="right"> */}
                 <NextLink href="notifications" passHref>
                     <Icon
                         color="neutrals.900"
@@ -90,11 +98,10 @@ const leftBar = ({ page }) => {
                         focusable
                         cursor="pointer"
                         _hover={{ color: "black" }}
+                        title="Notifications"
                     />
                 </NextLink>
 
-                {/* </Tooltip> */}
-                {/* <Tooltip hasArrow label="Bookmarks" placement="right"> */}
                 <NextLink href="/bookmarks" passHref>
                     <Icon
                         color="neutrals.900"
@@ -103,12 +110,10 @@ const leftBar = ({ page }) => {
                         as={page === "bookmark" ? BsBookmarksFill : BsBookmarks}
                         cursor="pointer"
                         _hover={{ color: "black" }}
+                        title="Bookmarks"
                     />
                 </NextLink>
 
-                {/* </Tooltip> */}
-
-                {/* <Tooltip hasArrow label="Topics" placement="right"> */}
                 <NextLink href="/topics" passHref>
                     <Icon
                         color="neutrals.900"
@@ -117,12 +122,10 @@ const leftBar = ({ page }) => {
                         focusable
                         cursor="pointer"
                         _hover={{ color: "black" }}
+                        title="Topics"
                     />
                 </NextLink>
 
-                {/* </Tooltip> */}
-
-                {/* <Tooltip hasArrow label="Topics" placement="right"> */}
                 <NextLink href="/story/drafts" passHref>
                     <Icon
                         aria-label="stories"
@@ -134,10 +137,9 @@ const leftBar = ({ page }) => {
                         focusable
                         cursor="pointer"
                         _hover={{ color: "black" }}
+                        title="Stories"
                     />
                 </NextLink>
-
-                {/* </Tooltip> */}
             </VStack>
             <Box
                 flex="1"
@@ -147,7 +149,6 @@ const leftBar = ({ page }) => {
                 justifyContent="space-between"
                 alignItems="center"
             >
-                {/* <Tooltip hasArrow label="Write Article" placement="right"> */}
                 <Icon
                     color="neutrals.900"
                     borderTop="1px"
@@ -158,8 +159,9 @@ const leftBar = ({ page }) => {
                     focusable
                     cursor="pointer"
                     _hover={{ color: "black" }}
+                    title="New Story"
                 />
-                {/* </Tooltip> */}
+
                 <Box
                     display="flex"
                     alignItems="center"
@@ -170,7 +172,7 @@ const leftBar = ({ page }) => {
                     <Avatar
                         size="sm"
                         name="Erinfolami"
-                        fontFamily="Montserrat"
+                        fontFamily="Sora"
                         fontWeight="bold"
                         cursor="pointer"
                         onClick={() => setOpenUserInfo(!openUserInfo)}
@@ -179,14 +181,17 @@ const leftBar = ({ page }) => {
                         position="absolute"
                         bottom="170%"
                         left="-70%"
-                        height={{ base: "100vh", lg: "500px" }}
+                        height={{ base: "100vh", lg: "440px" }}
                         width={{ base: "100vh", lg: "300px" }}
                         zIndex="14"
                         borderRadius="sm"
                         boxShadow="0px 0px 5px -1px rgba(0,0,0,0.2)"
                         bg="white"
-                        display={openUserInfo ? "block" : "none"}
+                        p="2rem 1rem"
+                        display={openUserInfo ? "flex" : "none"}
+                        flexDir="column"
                     >
+                        <ExtrasPopup viewport="desktop" />
                         <Box
                             sx={{
                                 content: `""`,

@@ -14,15 +14,19 @@ const subNavTemplate = ({ navs, active }) => {
                             pb="0.8rem"
                             as="span"
                             ml={index !== 0 && "4rem"}
-                            display="inline-block"
+                            display={
+                                nav.hidden
+                                    ? { base: "none", md: "inline-block" }
+                                    : "inline-block"
+                            }
                             mt="1px"
                             cursor="pointer"
                             fontWeight={type === active ? "semibold" : "normal"}
                             color={
                                 type == active ? "neutrals.900" : "neutrals.500"
                             }
-                            borderBottom={type === active && "1px"}
-                            borderColor={type === active && "neutrals.900"}
+                            borderBottom={type === active && "2px"}
+                            borderColor={type === active && "neutrals.800"}
                         >
                             {title}
                         </Text>

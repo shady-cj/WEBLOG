@@ -11,8 +11,10 @@ import {
     Icon,
     Avatar,
     Center,
+    Link,
     Flex,
 } from "@chakra-ui/react";
+import NextLink from "next/link";
 
 const blogPostCard = ({ name, title, text, date, bookmark }) => {
     return (
@@ -20,17 +22,25 @@ const blogPostCard = ({ name, title, text, date, bookmark }) => {
             <Grid templateColumns="repeat(4,1fr)" gap={4}>
                 <GridItem colSpan="3">
                     <Flex align="center">
-                        <Avatar size="xs" />
-                        <Text
-                            as="span"
-                            fontSize="0.7rem"
-                            fontWeight="600"
-                            mx="0.6rem"
-                            noOfLines={1}
-                            cursor="pointer"
-                        >
-                            {name}
-                        </Text>
+                        <NextLink href="/Peter" passHref>
+                            {/* <Link display="inline"> */}
+                            <Avatar size="xs" cursor="pointer" />
+                            {/* </Link> */}
+                        </NextLink>
+                        <NextLink href="/Peter" passHref>
+                            {/* <Link display="inline"> */}
+                            <Text
+                                as="span"
+                                fontSize="0.7rem"
+                                fontWeight="600"
+                                mx="0.6rem"
+                                noOfLines={1}
+                                cursor="pointer"
+                            >
+                                {name}
+                            </Text>
+                            {/* </Link> */}
+                        </NextLink>
                         <Text
                             fontSize="xs"
                             color="neutrals.600"
@@ -55,11 +65,10 @@ const blogPostCard = ({ name, title, text, date, bookmark }) => {
                     </Box>
                     <Box display={{ md: "block", base: "none" }}>
                         <Text
-                            fontSize="0.98rem"
+                            fontSize="0.91rem"
                             fontWeight="normal"
                             color="neutrals.900"
                             noOfLines={2}
-                            fontFamily="Georgia"
                         >
                             {text}
                         </Text>
@@ -85,7 +94,6 @@ const blogPostCard = ({ name, title, text, date, bookmark }) => {
                             height="24"
                             viewBox="0 0 24 24"
                             fill="none"
-                            class="tn"
                         ></svg>
 
                         <Icon

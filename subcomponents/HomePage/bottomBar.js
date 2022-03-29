@@ -1,8 +1,10 @@
-import { Box, Flex, Icon, Avatar } from "@chakra-ui/react";
+import { Box, Flex, Icon, Avatar, Text, Heading, Link } from "@chakra-ui/react";
 import React, { useState, useEffect } from "react";
 import { HiOutlineHome, HiHome } from "react-icons/hi";
 import { BsBookmarks, BsBookmarksFill } from "react-icons/bs";
 import { MdOutlineTopic, MdTopic } from "react-icons/md";
+import ExtrasPopup from "./extrasPopup";
+
 import NextLink from "next/link";
 const bottomBar = ({ page }) => {
     const [openUserInfo, setOpenUserInfo] = useState(false);
@@ -35,32 +37,42 @@ const bottomBar = ({ page }) => {
                 zIndex={10}
             >
                 <NextLink href="/" passHref>
-                    <Icon
-                        // fontWeight="100"
-                        color="neutrals.900"
-                        boxSize="0.55em"
-                        focusable
-                        as={page == "home" ? HiHome : HiOutlineHome}
-                        cursor="pointer"
-                    />
+                    <Link _focus={{ outline: "none" }}>
+                        <Icon
+                            // fontWeight="100"
+                            color="neutrals.900"
+                            boxSize="0.55em"
+                            focusable
+                            as={page == "home" ? HiHome : HiOutlineHome}
+                            cursor="pointer"
+                        />
+                    </Link>
                 </NextLink>
                 <NextLink href="/bookmarks" passHref>
-                    <Icon
-                        color="neutrals.900"
-                        focusable
-                        boxSize="0.48em"
-                        cursor="pointer"
-                        as={page == "bookmark" ? BsBookmarksFill : BsBookmarks}
-                    />
+                    <Link _focus={{ outline: "none" }}>
+                        <Icon
+                            color="neutrals.900"
+                            focusable
+                            boxSize="0.48em"
+                            cursor="pointer"
+                            as={
+                                page == "bookmark"
+                                    ? BsBookmarksFill
+                                    : BsBookmarks
+                            }
+                        />
+                    </Link>
                 </NextLink>
                 <NextLink href="/topics" passHref>
-                    <Icon
-                        color="neutrals.900"
-                        boxSize="0.5em"
-                        as={page == "topic" ? MdTopic : MdOutlineTopic}
-                        focusable
-                        cursor="pointer"
-                    />
+                    <Link _focus={{ outline: "none" }}>
+                        <Icon
+                            color="neutrals.900"
+                            boxSize="0.5em"
+                            as={page == "topic" ? MdTopic : MdOutlineTopic}
+                            focusable
+                            cursor="pointer"
+                        />
+                    </Link>
                 </NextLink>
                 <Avatar
                     size="sm"
@@ -82,7 +94,11 @@ const bottomBar = ({ page }) => {
                 background="white"
                 zIndex={9}
                 className="user-popup-mobile"
-            ></Box>
+                flexDir="column"
+                p="5.2rem 1rem"
+            >
+                <ExtrasPopup viewport="mobile" />
+            </Box>
         </>
     );
 };

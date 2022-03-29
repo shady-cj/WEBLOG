@@ -119,6 +119,9 @@ const navBanner = ({ setPopupOpen }) => {
                                 _focus={{
                                     border: "none",
                                 }}
+                                _active={{
+                                    color: "black",
+                                }}
                                 mr={{
                                     xs: "0.3rem",
                                     sm: "1rem",
@@ -161,6 +164,9 @@ const navBanner = ({ setPopupOpen }) => {
                             }}
                             _focus={{
                                 border: "none",
+                            }}
+                            _active={{
+                                color: "default.light",
                             }}
                         >
                             Get Started

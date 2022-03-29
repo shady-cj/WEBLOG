@@ -25,7 +25,7 @@ const index = ({ type }) => {
     ];
     return (
         <HomeWrapper page="notification">
-            <HomeGrid>
+            <HomeGrid page="notification">
                 <Heading
                     mt={{ lg: "1rem", base: "3rem" }}
                     fontSize={{ base: "xl", lg: "2xl" }}

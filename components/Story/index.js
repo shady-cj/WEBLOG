@@ -24,7 +24,7 @@ const Story = ({ type }) => {
     ];
     return (
         <HomeWrapper page="story">
-            <HomeGrid>
+            <HomeGrid page="story">
                 <Flex
                     align="center"
                     justify="space-between"

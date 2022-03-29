@@ -1,6 +1,7 @@
 import { Grid, GridItem } from "@chakra-ui/react";
 import SearchCard from "../../subcomponents/HomePage/searchCard";
-const homeGrid = ({ children }) => {
+import ProfileCard from "../../subcomponents/HomePage/profileCard";
+const homeGrid = ({ children, page }) => {
     return (
         <Grid templateColumns="repeat(14,1fr)">
             <GridItem
@@ -24,11 +25,11 @@ const homeGrid = ({ children }) => {
                 minH="100vh"
                 borderLeft="1px"
                 borderColor="neutrals.300"
-                p="4rem 2rem"
+                p={page === "profile" ? "2rem 1.2rem" : "4rem 2rem"}
                 display={{ lg: "block", xs: "none" }}
                 colSpan="4"
             >
-                <SearchCard />
+                {page === "profile" ? <ProfileCard /> : <SearchCard />}
             </GridItem>
         </Grid>
     );

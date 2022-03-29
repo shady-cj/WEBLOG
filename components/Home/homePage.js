@@ -72,7 +72,7 @@ const homePage = ({ children }) => {
     ];
     return (
         <HomeWrapper page="home">
-            <HomeGrid>
+            <HomeGrid page="home">
                 <Box>
                     <Box
                         borderBottom="1px"
