@@ -177,7 +177,7 @@ const extrasPopup = ({ viewport }) => {
                     <Icon
                         as={BiLogOutCircle}
                         boxSize="1.25rem"
-                        color="neutrals.800"
+                        color="red"
                         cursor="pointer"
                     />
                     <Text
@@ -186,6 +186,7 @@ const extrasPopup = ({ viewport }) => {
                         fontFamily="Sora"
                         ml="0.6rem"
                         cursor="pointer"
+                        color="red"
                     >
                         Sign Out
                     </Text>

@@ -14,7 +14,8 @@ import {
     HStack,
 } from "@chakra-ui/react";
 import NextLink from "next/link";
-
+import { useDispatch } from "react-redux";
+import { change_auth } from "../../redux/actions/auth";
 import { motion } from "framer-motion";
 
 import { useEffect, useRef, useState } from "react";
@@ -33,6 +34,9 @@ const navBanner = ({ setPopupOpen }) => {
     const fixedHeader = useRef(null);
     const Banner = useRef(null);
     const [scrolledPast, setScrolledPast] = useState(false);
+
+    const dispatch = useDispatch();
+
     useEffect(() => {
         const handleColorChangeOnScroll = () => {
             let threshold = fixedHeader.current.getBoundingClientRect().height;
@@ -134,6 +138,7 @@ const navBanner = ({ setPopupOpen }) => {
                                 onClick={(e) => {
                                     e.preventDefault();
                                     setPopupOpen(true);
+                                    dispatch(change_auth("login"));
                                 }}
                             >
                                 Sign In
@@ -148,6 +153,7 @@ const navBanner = ({ setPopupOpen }) => {
                             onClick={(e) => {
                                 e.preventDefault();
                                 setPopupOpen(true);
+                                dispatch(change_auth("register"));
                             }}
                             bg={scrolledPast ? "secondary.100" : "default.dark"}
                             transition="background-color 0.4s ease-in"
@@ -228,6 +234,7 @@ const navBanner = ({ setPopupOpen }) => {
                         }}
                         onClick={(e) => {
                             setPopupOpen(true);
+                            dispatch(change_auth("register"));
                         }}
                     >
                         Start Blogging

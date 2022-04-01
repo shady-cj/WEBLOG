@@ -1,7 +1,8 @@
 import React from "react";
 import { CloseIcon } from "@chakra-ui/icons";
 import { motion } from "framer-motion";
-import { Box, Center, Flex, Heading, VStack } from "@chakra-ui/react";
+import { useSelector } from "react-redux";
+import { Box, Center, Flex, Heading, VStack, Text } from "@chakra-ui/react";
 import AuthForm from "./authForm";
 
 const MotionFlex = motion(Flex);
@@ -23,6 +24,7 @@ const backdrop = {
     },
 };
 const loginPopup = ({ setPopupOpen }) => {
+    const authType = useSelector((state) => state.auth.authType);
     return (
         <MotionFlex
             position="fixed"
@@ -67,7 +69,21 @@ const loginPopup = ({ setPopupOpen }) => {
                 <Center h="100%" p="50px 10px">
                     <VStack>
                         <Heading as="h3" mb="4rem">
-                            Welcome Back
+                            {authType === "login" ? (
+                                "Welcome Back"
+                            ) : (
+                                <Heading fontSize="3xl" fontWeight="800">
+                                    Join{" "}
+                                    <Text
+                                        fontSize="3xl"
+                                        color="secondary.100"
+                                        as="span"
+                                        fontWeight="800"
+                                    >
+                                        WEBLOG
+                                    </Text>
+                                </Heading>
+                            )}
                         </Heading>
                         <Box>
                             <AuthForm />

@@ -15,6 +15,7 @@ import {
     Center,
     Flex,
 } from "@chakra-ui/react";
+
 import TrendingPostCard from "../../subcomponents/LandingPage/trendingPostCard";
 import BlogPostCard from "../../subcomponents/LandingPage/blogPostCard";
 import DiscoverMore from "../../subcomponents/LandingPage/discoverMore";

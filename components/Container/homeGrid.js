@@ -13,7 +13,7 @@ const homeGrid = ({ children, page }) => {
                 w="100%"
                 p={{
                     lg: "2rem 3.7rem",
-                    md: "2.5rem 4.5rem",
+                    md: "2.5rem 4.5rem 2.8rem",
                     base: "3rem 2rem",
                 }}
                 colSpan={{ lg: "9", base: "14" }}
