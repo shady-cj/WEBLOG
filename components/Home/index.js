@@ -1,6 +1,6 @@
 // import React from "react";
 // import Head from "next/head";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { AnimatePresence } from "framer-motion";
 import {
@@ -22,9 +22,11 @@ import DiscoverMore from "../../subcomponents/LandingPage/discoverMore";
 import { FiTrendingUp } from "react-icons/fi";
 import NavBanner from "../../subcomponents/LandingPage/navBanner";
 import LoginPopup from "../../subcomponents/LandingPage/loginPopup";
+import { useSelector } from "react-redux";
 
 const Home = () => {
-    const [popupOpen, setPopupOpen] = useState(false);
+    const popUp = useSelector((state) => state.popup.state);
+
     const data = [
         {
             key: 1,
@@ -69,10 +71,16 @@ const Home = () => {
             date: "Mar 8 · 6 min read",
         },
     ];
+
+    useEffect(() => {
+        const bodyEl = document.querySelector("body");
+        bodyEl.classList.toggle("popup-open", popUp);
+    }, [popUp]);
+
     return (
         <>
             <Box>
-                <NavBanner setPopupOpen={setPopupOpen} />
+                <NavBanner />
                 <Box py="4rem" borderBottom="1px" borderColor="neutrals.200">
                     <Container p="0 4rem">
                         <Heading
@@ -154,7 +162,7 @@ const Home = () => {
                 </Box>
             </Box>
             <AnimatePresence exitBeforeEnter>
-                {popupOpen && <LoginPopup setPopupOpen={setPopupOpen} />}
+                {popUp && <LoginPopup />}
             </AnimatePresence>
         </>
     );

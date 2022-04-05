@@ -6,7 +6,13 @@ import {
     ERROR_MESSAGE,
     LOGIN_SUCCESS,
     LOGIN_FAIL,
+    LOGOUT_SUCCESS,
+    LOGOUT_FAIL,
     CHANGE_AUTH_TYPE,
+    LOAD_USER_SUCCESS,
+    LOAD_USER_FAIL,
+    AUTHENTICATION_SUCCESS,
+    AUTHENTICATION_FAIL,
 } from "../actions/actionTypes";
 
 const initialState = {
@@ -46,11 +52,28 @@ const authReducer = (state = initialState, action) => {
                 ...state,
                 isAuthenticated: true,
                 error_message: { error: false, message: "" },
+                register_success: false,
             };
         case LOGIN_FAIL:
             return { ...state, isAuthenticated: false };
+
+        case LOAD_USER_SUCCESS:
+            return { ...state, user: payload.user };
+        case LOAD_USER_FAIL:
+            return { ...state, user: null, isAuthenticated: false };
+
+        case LOGOUT_FAIL:
+            return { ...state };
         case CHANGE_AUTH_TYPE:
             return { ...state, authType: payload };
+        case AUTHENTICATION_SUCCESS:
+            return { ...state, isAuthenticated: true };
+        case AUTHENTICATION_FAIL:
+            return { ...state, isAuthenticated: false, user: null };
+
+        case LOGOUT_SUCCESS:
+            return { ...state, isAuthenticated: false, user: null };
+
         default:
             return state;
     }

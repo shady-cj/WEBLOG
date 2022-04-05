@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { change_auth } from "../../redux/actions/auth";
 import { register, login } from "../../redux/actions/auth";
+
 import FormBox from "./formBox";
 import { MdOutlineArrowBackIosNew } from "react-icons/md";
 

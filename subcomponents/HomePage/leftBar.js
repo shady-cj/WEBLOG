@@ -16,10 +16,12 @@ import { BsBookmarks, BsBookmarksFill } from "react-icons/bs";
 import { RiFileList2Fill, RiFileList2Line } from "react-icons/ri";
 import { MdOutlineTopic, MdTopic } from "react-icons/md";
 import ExtrasPopup from "./extrasPopup";
+import { useSelector } from "react-redux";
 
 import { FiEdit } from "react-icons/fi";
 
 const leftBar = ({ page }) => {
+    const user = useSelector((state) => state.auth.user);
     const [openUserInfo, setOpenUserInfo] = useState(false);
     const router = useRouter();
     useEffect(() => {
@@ -164,7 +166,8 @@ const leftBar = ({ page }) => {
                 >
                     <Avatar
                         size="sm"
-                        name="Erinfolami"
+                        name={user && user.user.last_name}
+                        src={user && user.profile_picture}
                         fontFamily="Sora"
                         fontWeight="bold"
                         cursor="pointer"

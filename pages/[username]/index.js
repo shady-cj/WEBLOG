@@ -1,6 +1,7 @@
 import React from "react";
 import Profile from "../../components/Profile";
 import { useRouter } from "next/router";
+import Wrapper from "../../components/Container/HOC";
 const index = () => {
     const router = useRouter();
     const { username } = router.query;
@@ -8,4 +9,4 @@ const index = () => {
     return <>{username && <Profile type="home" username={username} />}</>;
 };
 
-export default index;
+export default Wrapper(index);

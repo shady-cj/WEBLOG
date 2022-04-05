@@ -11,10 +11,14 @@ import {
     Avatar,
     VStack,
     Center,
+    useRadio,
 } from "@chakra-ui/react";
+import { useSelector } from "react-redux";
 import SubNavTemplate from "../../subcomponents/HomePage/subNavTemplate";
 
-const index = ({ type, username }) => {
+const index = ({ type }) => {
+    const user = useSelector((state) => state.auth.user);
+    const username = user && user.user.username;
     const navs = [
         {
             title: "Home",
@@ -47,8 +51,8 @@ const index = ({ type, username }) => {
                     fontWeight="900"
                     display={{ lg: "block", base: "none" }}
                 >
-                    {username?.slice(0, 1).toUpperCase() + username?.slice(1)}
-                    {/* {username} */}
+                    {/* {username?.slice(0, 1).toUpperCase() + username?.slice(1)} */}
+                    {username}
                 </Heading>
                 <Box mt="3rem" display={{ lg: "none", base: "block" }}>
                     <Flex>
@@ -56,10 +60,11 @@ const index = ({ type, username }) => {
                             <Avatar name="Erinfolami" mr="1rem" />
                             <VStack spacing={2} align="flex-start">
                                 <Heading fontSize="md" fontWeight="700">
-                                    Erinfolami Peter
+                                    {user && user.user.last_name}{" "}
+                                    {user && user.user.first_name}
                                 </Heading>
                                 <Text fontSize="sm" color="neutrals.700">
-                                    @Peter
+                                    @{username}
                                 </Text>
                             </VStack>
                         </Flex>
@@ -81,20 +86,16 @@ const index = ({ type, username }) => {
                             Edit Profile
                         </Button>
                     </Flex>
-                    <Center width="60%" ml="3rem">
+                    <Box width="60%" ml="4rem">
                         <Text
                             mt="1rem"
                             noOfLines={2}
                             fontSize="xs"
                             color="neutrals.500"
                         >
-                            Lorem ipsum dolor sit amet consectetur adipisicing
-                            elit. Error earum perferendis, perspiciatis corporis
-                            dicta in veniam, eveniet, voluptatibus quaerat
-                            repellat quas pariatur rem. Esse, aspernatur est!
-                            Tempora optio dolor explicabo?
+                            {user && user.about}
                         </Text>
-                    </Center>
+                    </Box>
                 </Box>
                 <Box>
                     <SubNavTemplate active={type} navs={navs} />

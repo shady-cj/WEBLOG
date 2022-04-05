@@ -1,7 +1,8 @@
 import React from "react";
 import { CloseIcon } from "@chakra-ui/icons";
 import { motion } from "framer-motion";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { toggle_popup } from "../../redux/actions/popup";
 import { Box, Center, Flex, Heading, VStack, Text } from "@chakra-ui/react";
 import AuthForm from "./authForm";
 
@@ -23,8 +24,9 @@ const backdrop = {
         },
     },
 };
-const loginPopup = ({ setPopupOpen }) => {
+const loginPopup = () => {
     const authType = useSelector((state) => state.auth.authType);
+    const dispatch = useDispatch();
     return (
         <MotionFlex
             position="fixed"
@@ -64,7 +66,7 @@ const loginPopup = ({ setPopupOpen }) => {
                     top="5%"
                     color="neutrals.700"
                     cursor="pointer"
-                    onClick={() => setPopupOpen(false)}
+                    onClick={() => dispatch(toggle_popup(false))}
                 />
                 <Center h="100%" p="50px 10px">
                     <VStack>

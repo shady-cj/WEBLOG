@@ -3,12 +3,16 @@ import { IoMdStats, IoMdSettings } from "react-icons/io";
 import { MdGroupAdd, MdGroups } from "react-icons/md";
 import { BiLogOutCircle } from "react-icons/bi";
 import { RiFileList2Fill, RiFileList2Line } from "react-icons/ri";
-
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../../redux/actions/auth";
 import { useRouter } from "next/router";
 import { Box, Flex, Icon, Avatar, Text, Heading } from "@chakra-ui/react";
 
 const extrasPopup = ({ viewport }) => {
+    const dispatch = useDispatch();
+    const user = useSelector((state) => state.auth.user);
     const router = useRouter();
+
     return (
         <>
             <Flex
@@ -21,28 +25,30 @@ const extrasPopup = ({ viewport }) => {
             >
                 <Avatar
                     size="md"
-                    name="Erinfolami"
+                    name={user && user.user.last_name}
                     cursor="pointer"
                     fontFamily="Sora"
                     fontWeight="bold"
-                    onClick={() => router.push("/peter")}
+                    src={user && user.profile_picture}
+                    onClick={() => router.push(`/${user.user.username}`)}
                 />
 
                 <Flex direction="column" ml="1rem" pt="0.2rem">
                     <Heading
                         fontSize="md"
                         cursor="pointer"
-                        onClick={() => router.push("/peter")}
+                        onClick={() => router.push(`/${user.user.username}`)}
                     >
-                        Erinfolami Peter
+                        {user &&
+                            user.user.last_name + " " + user.user.first_name}
                     </Heading>
 
                     <Text
                         fontSize="sm"
                         cursor="pointer"
-                        onClick={() => router.push("/peter")}
+                        onClick={() => router.push(`/${user.user.username}`)}
                     >
-                        @peter
+                        @{user && user.user.username}
                     </Text>
                 </Flex>
             </Flex>
@@ -54,7 +60,9 @@ const extrasPopup = ({ viewport }) => {
                         boxSize="1.2rem"
                         color="neutrals.800"
                         cursor="pointer"
-                        onClick={() => router.push("/peter/followers")}
+                        onClick={() =>
+                            router.push(`/${user.user.username}/followers`)
+                        }
                     />
 
                     <Text
@@ -63,7 +71,9 @@ const extrasPopup = ({ viewport }) => {
                         fontFamily="Sora"
                         ml="0.6rem"
                         cursor="pointer"
-                        onClick={() => router.push("/peter/followers")}
+                        onClick={() =>
+                            router.push(`/${user.user.username}/followers`)
+                        }
                     >
                         Followers
                     </Text>
@@ -73,9 +83,11 @@ const extrasPopup = ({ viewport }) => {
                         fontFamily="Sora"
                         cursor="pointer"
                         ml="1.3rem"
-                        onClick={() => router.push("/peter/followers")}
+                        onClick={() =>
+                            router.push(`/${user.user.username}/followers`)
+                        }
                     >
-                        23k
+                        {user && user.user.followers.length}
                     </Text>
                 </Flex>
                 <Flex align="center" m="2rem 0">
@@ -84,7 +96,9 @@ const extrasPopup = ({ viewport }) => {
                         boxSize="1.2rem"
                         color="neutrals.800"
                         cursor="pointer"
-                        onClick={() => router.push("/peter/following")}
+                        onClick={() =>
+                            router.push(`/${user.user.username}/following`)
+                        }
                     />
 
                     <Text
@@ -93,7 +107,9 @@ const extrasPopup = ({ viewport }) => {
                         fontFamily="Sora"
                         cursor="pointer"
                         ml="0.6rem"
-                        onClick={() => router.push("/peter/following")}
+                        onClick={() =>
+                            router.push(`/${user.user.username}/following`)
+                        }
                     >
                         Following
                     </Text>
@@ -103,9 +119,11 @@ const extrasPopup = ({ viewport }) => {
                         fontFamily="Sora"
                         ml="1.3rem"
                         cursor="pointer"
-                        onClick={() => router.push("/peter/following")}
+                        onClick={() =>
+                            router.push(`/${user.user.username}/following`)
+                        }
                     >
-                        12k
+                        {user && user.following.length}
                     </Text>
                 </Flex>
 
@@ -187,6 +205,12 @@ const extrasPopup = ({ viewport }) => {
                         ml="0.6rem"
                         cursor="pointer"
                         color="red"
+                        onClick={() =>
+                            dispatch &&
+                            dispatch !== null &&
+                            dispatch !== undefined &&
+                            dispatch(logout())
+                        }
                     >
                         Sign Out
                     </Text>

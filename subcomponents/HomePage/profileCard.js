@@ -9,13 +9,20 @@ import {
     Button,
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
 const profileCard = () => {
+    const user = useSelector((state) => state.auth.user);
     const router = useRouter();
     return (
         <Box position="sticky" top="10px">
             <Center width="100%">
                 <Box w="200px" h="200px">
-                    <Avatar name="Erinfolami" size="full" fontSize="14rem" />
+                    <Avatar
+                        name={user && user.user.last_name}
+                        src={user && user.profile_picture}
+                        size="full"
+                        fontSize="14rem"
+                    />
                 </Box>
             </Center>
             <Box
@@ -25,9 +32,12 @@ const profileCard = () => {
                 borderColor="neutrals.300"
             >
                 <Flex direction="column">
-                    <Heading fontSize="lg">Erinfolami Peter</Heading>
+                    <Heading fontSize="lg">
+                        {user &&
+                            user.user.last_name + " " + user.user.first_name}
+                    </Heading>
                     <Text mt="0.4rem" fontSize="md" color="neutrals.700">
-                        @Peter
+                        @{user && user.user.username}
                     </Text>
                     <Text
                         mt="1rem"
@@ -35,15 +45,7 @@ const profileCard = () => {
                         noOfLines={3}
                         color="neutrals.500"
                     >
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                        sed do eiusmod tempor incididunt ut labore et dolore
-                        magna aliqua. Ut enim ad minim veniam, quis nostrud
-                        exercitation ullamco laboris nisi ut aliquip ex ea
-                        commodo consequat. Duis aute irure dolor in
-                        reprehenderit in voluptate velit esse cillum dolore eu
-                        fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-                        non proident, sunt in culpa qui officia deserunt mollit
-                        anim id est laborum.
+                        {user && user.about}
                     </Text>
                 </Flex>
             </Box>
@@ -63,7 +65,7 @@ const profileCard = () => {
                         </Text>
 
                         <Text fontSize="sm" ml="1rem">
-                            4
+                            {user && user.articles.drafts}
                         </Text>
                     </Flex>
                     <Flex justify="space-between" w="80%" mb="0.4rem">
@@ -76,7 +78,7 @@ const profileCard = () => {
                         </Text>
 
                         <Text fontSize="sm" ml="1rem">
-                            13
+                            {user && user.articles.published}
                         </Text>
                     </Flex>
                     <Flex justify="space-between" w="80%">
@@ -89,7 +91,7 @@ const profileCard = () => {
                         </Text>
 
                         <Text fontSize="sm" ml="1rem">
-                            1
+                            {user && user.articles.trashed}
                         </Text>
                     </Flex>
                 </Flex>

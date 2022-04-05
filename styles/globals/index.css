@@ -11,3 +11,7 @@ a:active {
     box-shadow: none !important;
     color: rgb(252, 252, 252, 0.6);
 }
+
+.popup-open {
+    overflow: hidden;
+}

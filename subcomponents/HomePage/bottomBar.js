@@ -5,8 +5,13 @@ import { BsBookmarks, BsBookmarksFill } from "react-icons/bs";
 import { MdOutlineTopic, MdTopic } from "react-icons/md";
 import ExtrasPopup from "./extrasPopup";
 import { useRouter } from "next/router";
+import { toggle_popup } from "../../redux/actions/popup";
+import { useSelector, useDispatch } from "react-redux";
 const bottomBar = ({ page }) => {
-    const [openUserInfo, setOpenUserInfo] = useState(false);
+    const dispatch = useDispatch();
+    const user = useSelector((state) => state.auth.user);
+    const popUp = useSelector((state) => state.popup.state);
+
     const router = useRouter();
     useEffect(() => {
         const openPopup = (e) => {
@@ -14,14 +19,20 @@ const bottomBar = ({ page }) => {
                 !e.target.closest(".user-popup-mobile") &&
                 !e.target.closest(".avatar-btn")
             ) {
-                setOpenUserInfo(false);
+                dispatch(toggle_popup(false));
             }
         };
+
         window.addEventListener("click", openPopup);
         return () => {
             window.removeEventListener("click", openPopup);
         };
     }, []);
+    useEffect(() => {
+        const bodyEl = document.querySelector("body");
+        bodyEl.classList.toggle("popup-open", popUp);
+    }, [popUp]);
+
     return (
         <>
             <Flex
@@ -66,18 +77,19 @@ const bottomBar = ({ page }) => {
 
                 <Avatar
                     size="sm"
-                    name="Erinfolami"
+                    name={user && user.user.last_name}
                     fontFamily="Montserrat"
                     fontWeight="bold"
                     className="avatar-btn"
                     cursor="pointer"
-                    onClick={() => setOpenUserInfo(!openUserInfo)}
+                    src={user && user.profile_picture}
+                    onClick={() => dispatch(toggle_popup(!popUp))}
                 />
             </Flex>
             <Box
                 position="fixed"
                 left="0"
-                display={openUserInfo ? "flex" : "none"}
+                display={popUp ? "flex" : "none"}
                 top="0"
                 width="100vw"
                 height="100vh"
@@ -86,6 +98,7 @@ const bottomBar = ({ page }) => {
                 className="user-popup-mobile"
                 flexDir="column"
                 p="5.2rem 1rem"
+                overflowY="scroll"
             >
                 <ExtrasPopup viewport="mobile" />
             </Box>

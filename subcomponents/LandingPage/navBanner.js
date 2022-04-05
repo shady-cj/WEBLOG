@@ -16,6 +16,7 @@ import {
 import NextLink from "next/link";
 import { useDispatch } from "react-redux";
 import { change_auth } from "../../redux/actions/auth";
+import { toggle_popup } from "../../redux/actions/popup";
 import { motion } from "framer-motion";
 
 import { useEffect, useRef, useState } from "react";
@@ -30,7 +31,7 @@ const appearIn = {
     hidden: { opacity: 0, transform: "scale(0)" },
 };
 
-const navBanner = ({ setPopupOpen }) => {
+const navBanner = () => {
     const fixedHeader = useRef(null);
     const Banner = useRef(null);
     const [scrolledPast, setScrolledPast] = useState(false);
@@ -137,7 +138,7 @@ const navBanner = ({ setPopupOpen }) => {
                                 }}
                                 onClick={(e) => {
                                     e.preventDefault();
-                                    setPopupOpen(true);
+                                    dispatch(toggle_popup(true));
                                     dispatch(change_auth("login"));
                                 }}
                             >
@@ -152,7 +153,7 @@ const navBanner = ({ setPopupOpen }) => {
                             }}
                             onClick={(e) => {
                                 e.preventDefault();
-                                setPopupOpen(true);
+                                dispatch(toggle_popup(true));
                                 dispatch(change_auth("register"));
                             }}
                             bg={scrolledPast ? "secondary.100" : "default.dark"}
@@ -233,7 +234,7 @@ const navBanner = ({ setPopupOpen }) => {
                             border: "none",
                         }}
                         onClick={(e) => {
-                            setPopupOpen(true);
+                            dispatch(toggle_popup(true));
                             dispatch(change_auth("register"));
                         }}
                     >

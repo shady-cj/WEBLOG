@@ -1,9 +1,14 @@
 import HomeWrapper from "../Container/homeWrapper";
 import HomeGrid from "../Container/homeGrid";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Box, Link, Text, Grid, GridItem } from "@chakra-ui/react";
 import BlogPostCard from "../../subcomponents/HomePage/blogPostCard";
+import { useSelector, useDispatch } from "react-redux";
+import { toggle_popup } from "../../redux/actions/popup";
+
 const homePage = ({ children }) => {
+    const popUp = useSelector((state) => state.popup.state);
+    const dispatch = useDispatch();
     const [activeNav, setActiveNav] = useState("all");
     const data = [
         {
@@ -70,6 +75,24 @@ const homePage = ({ children }) => {
             date: " · Mar 8",
         },
     ];
+
+    useEffect(() => {
+        const closePopup = () => {
+            const bodyEl = document.querySelector("body");
+
+            if (window.innerWidth > 992) {
+                dispatch(toggle_popup(false));
+                bodyEl.classList.remove("popup-open");
+            }
+        };
+        closePopup();
+        window.addEventListener("resize", closePopup);
+
+        return () => {
+            window.removeEventListener("resize", closePopup);
+        };
+    }, [popUp]);
+
     return (
         <HomeWrapper page="home">
             <HomeGrid page="home">

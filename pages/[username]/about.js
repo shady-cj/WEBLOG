@@ -1,6 +1,7 @@
 import React from "react";
 import Profile from "../../components/Profile";
 import { useRouter } from "next/router";
+import Wrapper from "../../components/Container/HOC";
 
 const about = () => {
     const router = useRouter();
@@ -8,4 +9,4 @@ const about = () => {
     return <>{username && <Profile type="about" username={username} />}</>;
 };
 
-export default about;
+export default Wrapper(about);
