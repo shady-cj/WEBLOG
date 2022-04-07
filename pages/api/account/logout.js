@@ -8,7 +8,7 @@ export default async (req, res) => {
             httpOnly: true,
             secure: process.env.NODE_ENV !== "development",
             sameSite: "strict",
-            path: "/api",
+            path: "/",
         });
         const refresh_cookies = cookie.serialize("refresh", "", {
             maxAge: 60 * 60 * 24 * 7 * 4,
@@ -16,7 +16,7 @@ export default async (req, res) => {
             expires: new Date(0),
             secure: process.env.NODE_ENV !== "development",
             sameSite: "strict",
-            path: "/api",
+            path: "/",
         });
 
         res.setHeader("Set-Cookie", [access_cookies, refresh_cookies]);

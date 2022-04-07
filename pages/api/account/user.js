@@ -3,7 +3,9 @@ import { API_URL } from "../../../config";
 export default async (req, res) => {
     if (req.method === "GET") {
         const cookies = cookie.parse(req.headers.cookie ?? "");
+        // console.log(cookies);
         const access = cookies.access ?? false;
+        // console.log("account", access);
         if (access === false) {
             return res.status(401).json({
                 error: "Unauthorized",

@@ -31,6 +31,7 @@ export const load_user = () => async (dispatch) => {
                 type: LOAD_USER_SUCCESS,
                 payload: data,
             });
+            dispatch(toggle_popup(false));
         } else {
             dispatch({
                 type: LOAD_USER_FAIL,
@@ -47,30 +48,30 @@ export const change_auth = (auth_type) => ({
     type: CHANGE_AUTH_TYPE,
     payload: auth_type,
 });
-export const check_auth_status = () => async (dispatch) => {
-    try {
-        const res = await fetch("/api/account/verify", {
-            method: "GET",
-            headers: {
-                Accept: "application/json",
-            },
-        });
-        if (res.status === 200) {
-            dispatch({
-                type: AUTHENTICATION_SUCCESS,
-            });
-            dispatch(load_user());
-        } else {
-            dispatch({
-                type: AUTHENTICATION_FAIL,
-            });
-        }
-    } catch (err) {
-        dispatch({
-            type: AUTHENTICATION_FAIL,
-        });
-    }
-};
+// export const check_auth_status = () => async (dispatch) => {
+//     try {
+//         const res = await fetch("/api/account/verify", {
+//             method: "GET",
+//             headers: {
+//                 Accept: "application/json",
+//             },
+//         });
+//         if (res.status === 200) {
+//             dispatch({
+//                 type: AUTHENTICATION_SUCCESS,
+//             });
+//             dispatch(load_user());
+//         } else {
+//             dispatch({
+//                 type: AUTHENTICATION_FAIL,
+//             });
+//         }
+//     } catch (err) {
+//         dispatch({
+//             type: AUTHENTICATION_FAIL,
+//         });
+//     }
+// };
 export const register =
     ({ firstName, lastName, password }) =>
     async (dispatch) => {
@@ -144,8 +145,6 @@ export const login =
             const data = await res.json();
 
             if (res.status === 200) {
-                dispatch(toggle_popup(false));
-
                 dispatch({
                     type: LOGIN_SUCCESS,
                 });
@@ -171,6 +170,8 @@ export const login =
     };
 
 export const logout = () => async (dispatch) => {
+    dispatch(toggle_popup(false));
+
     try {
         const res = await fetch("/api/account/logout", {
             method: "POST",
@@ -181,15 +182,10 @@ export const logout = () => async (dispatch) => {
         });
 
         if (res.status === 200) {
-            dispatch(toggle_popup(false));
             dispatch({
                 type: LOGOUT_SUCCESS,
             });
         } else {
-            // dispatch({
-            //     type: ERROR_MESSAGE,
-            //     payload: data.error,
-            // });
             dispatch({
                 type: LOGOUT_FAIL,
             });

@@ -1,17 +1,29 @@
 import HomePage from "../components/Home/homePage";
-import React from "react";
-import Wrapper from "../components/Container/HOC";
-
+import React, { useEffect } from "react";
+import { requireAuth } from "../components/Container/HOC/requireAuth";
+import { wrapper } from "../redux/store";
+import { useSelector } from "react-redux";
+import AuthlessHomepage from "../components/Home";
+import { useRouter } from "next/router";
 function Home() {
-    return <HomePage />;
+    const router = useRouter();
+    const { isAuthenticated, user } = useSelector((state) => state.auth);
+    useEffect(() => {
+        const q = router.query.next;
+        if (isAuthenticated && q) {
+            router.replace(q);
+        }
+    }, [isAuthenticated]);
+
+    return <>{isAuthenticated && user ? <HomePage /> : <AuthlessHomepage />}</>;
 }
 
-const HomeWrapper = Wrapper(Home);
-export default HomeWrapper;
+export default Home;
 
-// export async function getServerSideProps(context) {
-//     console.log(context.store);
-//     return {
-//         props: {},
-//     };
-// }
+export const getServerSideProps = wrapper.getServerSideProps((store) =>
+    requireAuth(async (ctx) => {
+        return {
+            props: {},
+        };
+    }, store)
+);

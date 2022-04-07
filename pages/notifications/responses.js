@@ -1,8 +1,17 @@
 import React from "react";
+import { requireAuth } from "../../components/Container/HOC/requireAuth";
+import { wrapper } from "../../redux/store";
 import Notification from "../../Components/Notification";
-import Wrapper from "../../components/Container/HOC";
 const responses = () => {
     return <Notification type="response" />;
 };
 
-export default Wrapper(responses);
+export default responses;
+
+export const getServerSideProps = wrapper.getServerSideProps((store) =>
+    requireAuth(async (ctx) => {
+        return {
+            props: {},
+        };
+    }, store)
+);

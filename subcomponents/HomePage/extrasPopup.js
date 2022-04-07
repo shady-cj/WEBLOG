@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { IoMdStats, IoMdSettings } from "react-icons/io";
 import { MdGroupAdd, MdGroups } from "react-icons/md";
 import { BiLogOutCircle } from "react-icons/bi";
 import { RiFileList2Fill, RiFileList2Line } from "react-icons/ri";
+import { toggle_popup } from "../../redux/actions/popup";
 import { useDispatch, useSelector } from "react-redux";
 import { logout } from "../../redux/actions/auth";
 import { useRouter } from "next/router";
@@ -11,7 +12,14 @@ import { Box, Flex, Icon, Avatar, Text, Heading } from "@chakra-ui/react";
 const extrasPopup = ({ viewport }) => {
     const dispatch = useDispatch();
     const user = useSelector((state) => state.auth.user);
+    const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
     const router = useRouter();
+
+    useEffect(() => {
+        if (!isAuthenticated || user === null) {
+            router.replace("/");
+        }
+    }, [isAuthenticated, user]);
 
     return (
         <>
@@ -30,14 +38,20 @@ const extrasPopup = ({ viewport }) => {
                     fontFamily="Sora"
                     fontWeight="bold"
                     src={user && user.profile_picture}
-                    onClick={() => router.push(`/${user.user.username}`)}
+                    onClick={() => {
+                        dispatch(toggle_popup(false));
+                        router.push(`/${user.user.username}`);
+                    }}
                 />
 
                 <Flex direction="column" ml="1rem" pt="0.2rem">
                     <Heading
                         fontSize="md"
                         cursor="pointer"
-                        onClick={() => router.push(`/${user.user.username}`)}
+                        onClick={() => {
+                            dispatch(toggle_popup(false));
+                            router.push(`/${user.user.username}`);
+                        }}
                     >
                         {user &&
                             user.user.last_name + " " + user.user.first_name}
@@ -46,7 +60,10 @@ const extrasPopup = ({ viewport }) => {
                     <Text
                         fontSize="sm"
                         cursor="pointer"
-                        onClick={() => router.push(`/${user.user.username}`)}
+                        onClick={() => {
+                            dispatch(toggle_popup(false));
+                            router.push(`/${user.user.username}`);
+                        }}
                     >
                         @{user && user.user.username}
                     </Text>
@@ -60,9 +77,10 @@ const extrasPopup = ({ viewport }) => {
                         boxSize="1.2rem"
                         color="neutrals.800"
                         cursor="pointer"
-                        onClick={() =>
-                            router.push(`/${user.user.username}/followers`)
-                        }
+                        onClick={() => {
+                            dispatch(toggle_popup(false));
+                            router.push(`/${user.user.username}/followers`);
+                        }}
                     />
 
                     <Text
@@ -71,9 +89,10 @@ const extrasPopup = ({ viewport }) => {
                         fontFamily="Sora"
                         ml="0.6rem"
                         cursor="pointer"
-                        onClick={() =>
-                            router.push(`/${user.user.username}/followers`)
-                        }
+                        onClick={() => {
+                            dispatch(toggle_popup(false));
+                            router.push(`/${user.user.username}/followers`);
+                        }}
                     >
                         Followers
                     </Text>
@@ -83,9 +102,10 @@ const extrasPopup = ({ viewport }) => {
                         fontFamily="Sora"
                         cursor="pointer"
                         ml="1.3rem"
-                        onClick={() =>
-                            router.push(`/${user.user.username}/followers`)
-                        }
+                        onClick={() => {
+                            dispatch(toggle_popup(false));
+                            router.push(`/${user.user.username}/followers`);
+                        }}
                     >
                         {user && user.user.followers.length}
                     </Text>
@@ -96,9 +116,10 @@ const extrasPopup = ({ viewport }) => {
                         boxSize="1.2rem"
                         color="neutrals.800"
                         cursor="pointer"
-                        onClick={() =>
-                            router.push(`/${user.user.username}/following`)
-                        }
+                        onClick={() => {
+                            dispatch(toggle_popup(false));
+                            router.push(`/${user.user.username}/following`);
+                        }}
                     />
 
                     <Text
@@ -107,9 +128,10 @@ const extrasPopup = ({ viewport }) => {
                         fontFamily="Sora"
                         cursor="pointer"
                         ml="0.6rem"
-                        onClick={() =>
-                            router.push(`/${user.user.username}/following`)
-                        }
+                        onClick={() => {
+                            dispatch(toggle_popup(false));
+                            router.push(`/${user.user.username}/following`);
+                        }}
                     >
                         Following
                     </Text>
@@ -119,9 +141,10 @@ const extrasPopup = ({ viewport }) => {
                         fontFamily="Sora"
                         ml="1.3rem"
                         cursor="pointer"
-                        onClick={() =>
-                            router.push(`/${user.user.username}/following`)
-                        }
+                        onClick={() => {
+                            dispatch(toggle_popup(false));
+                            router.push(`/${user.user.username}/following`);
+                        }}
                     >
                         {user && user.following.length}
                     </Text>
@@ -141,7 +164,10 @@ const extrasPopup = ({ viewport }) => {
                             boxSize="1.2rem"
                             color="neutrals.800"
                             cursor="pointer"
-                            onClick={() => router.push("/story/drafts")}
+                            onClick={() => {
+                                dispatch(toggle_popup(false));
+                                router.push("/story/drafts");
+                            }}
                         />
 
                         <Text
@@ -150,7 +176,10 @@ const extrasPopup = ({ viewport }) => {
                             fontFamily="Sora"
                             ml="0.6rem"
                             cursor="pointer"
-                            onClick={() => router.push("/story/drafts")}
+                            onClick={() => {
+                                dispatch(toggle_popup(false));
+                                router.push("/story/drafts");
+                            }}
                         >
                             Your Stories
                         </Text>

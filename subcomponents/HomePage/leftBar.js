@@ -162,7 +162,6 @@ const leftBar = ({ page }) => {
                     alignItems="center"
                     as="span"
                     position="relative"
-                    className="user-popup"
                 >
                     <Avatar
                         size="sm"
@@ -172,6 +171,7 @@ const leftBar = ({ page }) => {
                         fontWeight="bold"
                         cursor="pointer"
                         onClick={() => setOpenUserInfo(!openUserInfo)}
+                        className="user-popup"
                     />
                     <Box
                         position="absolute"
@@ -186,6 +186,7 @@ const leftBar = ({ page }) => {
                         p="2rem 1rem"
                         display={openUserInfo ? "flex" : "none"}
                         flexDir="column"
+                        className="user-popup"
                     >
                         <ExtrasPopup viewport="desktop" />
                         <Box

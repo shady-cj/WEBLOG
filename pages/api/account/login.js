@@ -26,7 +26,7 @@ export default async (req, res) => {
                     httpOnly: true,
                     secure: process.env.NODE_ENV !== "development",
                     sameSite: "strict",
-                    path: "/api",
+                    path: "/",
                 });
                 const refresh_cookies = cookie.serialize(
                     "refresh",
@@ -36,7 +36,7 @@ export default async (req, res) => {
                         httpOnly: true,
                         secure: process.env.NODE_ENV !== "development",
                         sameSite: "strict",
-                        path: "/api",
+                        path: "/",
                     }
                 );
 
