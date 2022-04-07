@@ -13,6 +13,7 @@ import {
     LOAD_USER_SUCCESS,
     AUTHENTICATION_FAIL,
     AUTHENTICATION_SUCCESS,
+    AUTHENTICATING,
 } from "./actionTypes";
 
 import { toggle_popup } from "./popup";
@@ -48,6 +49,9 @@ export const change_auth = (auth_type) => ({
     payload: auth_type,
 });
 export const check_auth_status = () => async (dispatch) => {
+    dispatch({
+        type: AUTHENTICATING,
+    });
     try {
         const res = await fetch("/api/account/verify", {
             method: "GET",
@@ -55,10 +59,12 @@ export const check_auth_status = () => async (dispatch) => {
                 Accept: "application/json",
             },
         });
+
         if (res.status === 200) {
             dispatch({
                 type: AUTHENTICATION_SUCCESS,
             });
+
             dispatch(load_user());
         } else {
             dispatch({
@@ -131,6 +137,9 @@ export const login =
         });
         dispatch({
             type: SET_AUTH_LOADING,
+        });
+        dispatch({
+            type: AUTHENTICATING,
         });
         try {
             const res = await fetch("/api/account/login", {

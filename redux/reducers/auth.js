@@ -13,11 +13,13 @@ import {
     LOAD_USER_FAIL,
     AUTHENTICATION_SUCCESS,
     AUTHENTICATION_FAIL,
+    AUTHENTICATING,
 } from "../actions/actionTypes";
 
 const initialState = {
     user: null,
     isAuthenticated: false,
+    isAuthenticating: false,
     loading: false,
     authType: "login",
     register_success: false,
@@ -55,21 +57,37 @@ const authReducer = (state = initialState, action) => {
                 register_success: false,
             };
         case LOGIN_FAIL:
-            return { ...state, isAuthenticated: false };
+            return {
+                ...state,
+                isAuthenticated: false,
+                isAuthenticating: false,
+            };
 
         case LOAD_USER_SUCCESS:
-            return { ...state, user: payload.user };
+            return { ...state, isAuthenticating: false, user: payload.user };
         case LOAD_USER_FAIL:
-            return { ...state, user: null, isAuthenticated: false };
+            return {
+                ...state,
+                user: null,
+                isAuthenticating: false,
+                isAuthenticated: false,
+            };
 
         case LOGOUT_FAIL:
             return { ...state };
+        case AUTHENTICATING:
+            return { ...state, isAuthenticating: true };
         case CHANGE_AUTH_TYPE:
             return { ...state, authType: payload };
         case AUTHENTICATION_SUCCESS:
             return { ...state, isAuthenticated: true };
         case AUTHENTICATION_FAIL:
-            return { ...state, isAuthenticated: false, user: null };
+            return {
+                ...state,
+                isAuthenticated: false,
+                user: null,
+                isAuthenticating: false,
+            };
 
         case LOGOUT_SUCCESS:
             return { ...state, isAuthenticated: false, user: null };

@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Topic from "../../components/Topic";
-import Wrapper from "../../components/Container/HOC";
+import Wrapper from "../../components/Container/HOC/requireAuth";
 
 const index = () => {
     return <Topic type="all" />;
