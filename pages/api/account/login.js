@@ -22,7 +22,7 @@ export default async (req, res) => {
             // console.log(data);
             if (apiRes.status === 200) {
                 const access_cookies = cookie.serialize("access", data.access, {
-                    maxAge: 60 * 60 * 24 * 7,
+                    maxAge: 60 * 58,
                     httpOnly: true,
                     secure: process.env.NODE_ENV !== "development",
                     sameSite: "strict",
@@ -32,7 +32,7 @@ export default async (req, res) => {
                     "refresh",
                     data.refresh,
                     {
-                        maxAge: 60 * 60 * 24 * 7 * 4,
+                        maxAge: 60 * 60 * 23,
                         httpOnly: true,
                         secure: process.env.NODE_ENV !== "development",
                         sameSite: "strict",

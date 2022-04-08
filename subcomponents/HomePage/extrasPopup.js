@@ -234,12 +234,12 @@ const extrasPopup = ({ viewport }) => {
                         ml="0.6rem"
                         cursor="pointer"
                         color="red"
-                        onClick={() =>
+                        onClick={() => {
                             dispatch &&
-                            dispatch !== null &&
-                            dispatch !== undefined &&
-                            dispatch(logout())
-                        }
+                                dispatch !== null &&
+                                dispatch !== undefined &&
+                                dispatch(logout());
+                        }}
                     >
                         Sign Out
                     </Text>

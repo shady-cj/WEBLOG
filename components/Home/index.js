@@ -113,8 +113,10 @@ const Home = () => {
                             }}
                             gap={5}
                         >
-                            {data.map((entry) => {
-                                return <TrendingPostCard {...entry} />;
+                            {data.map((entry, index) => {
+                                return (
+                                    <TrendingPostCard key={index} {...entry} />
+                                );
                             })}
                         </Grid>
                     </Container>
@@ -142,8 +144,10 @@ const Home = () => {
                                 width="100%"
                                 colSpan={{ xs: "3", lg: "2" }}
                             >
-                                {data.map((entry) => {
-                                    return <BlogPostCard {...entry} />;
+                                {data.map((entry, index) => {
+                                    return (
+                                        <BlogPostCard key={index} {...entry} />
+                                    );
                                 })}
                             </GridItem>
                             <Hide below="lg">

@@ -4,6 +4,7 @@ import HomeGrid from "../Container/homeGrid";
 import Image from "next/image";
 import { Heading, Box, Flex, Text, Button } from "@chakra-ui/react";
 import SubNavTemplate from "../../subcomponents/HomePage/subNavTemplate";
+import FollowLayout from "../../subcomponents/HomePage/followLayout";
 const index = ({ type }) => {
     const navs = [
         {
@@ -68,70 +69,11 @@ const index = ({ type }) => {
                         {topics.map((topic, index) => {
                             const { following, name } = topic;
                             return (
-                                <Flex
-                                    key={index}
-                                    justify="space-between"
-                                    mb="2rem"
-                                    align="center"
-                                    borderBottom="1px"
-                                    borderColor="neutrals.200"
-                                    pb="1rem"
-                                >
-                                    <Box display="flex" alignItems="center">
-                                        <Box height="30px" width="40px">
-                                            <Image
-                                                src={
-                                                    "https://imageio.forbes.com/specials-images/imageserve/5d35eacaf1176b0008974b54/0x0.jpg?format=jpg&crop=4560,2565,x790,y784,safe&fit=crop"
-                                                }
-                                                layout="responsive"
-                                                width={40}
-                                                height={30}
-                                            />
-                                        </Box>
-
-                                        <Text
-                                            fontFamily="Sora"
-                                            fontSize="sm"
-                                            ml="2rem"
-                                        >
-                                            {name}
-                                        </Text>
-                                    </Box>
-                                    <Button
-                                        borderRadius="full"
-                                        size="sm"
-                                        fontSize="xs"
-                                        color={
-                                            following
-                                                ? "secondary.100"
-                                                : "white"
-                                        }
-                                        _focus={{
-                                            outline: "none",
-                                            boxShadow: "none",
-                                        }}
-                                        _active={{
-                                            background: following
-                                                ? "white"
-                                                : "secondary.100",
-                                        }}
-                                        _hover={{
-                                            background: following
-                                                ? "#2a7c6f1a"
-                                                : "secondary.300",
-                                        }}
-                                        fontWeight="normal"
-                                        border={following && "1px"}
-                                        borderColor="neutrals.300"
-                                        background={
-                                            following
-                                                ? "white"
-                                                : "secondary.100"
-                                        }
-                                    >
-                                        {following ? "Following" : "Follow"}
-                                    </Button>
-                                </Flex>
+                                <FollowLayout
+                                    key={name + index}
+                                    following={following}
+                                    name={name}
+                                />
                             );
                         })}
                     </Box>

@@ -10,9 +10,12 @@ import {
 } from "@chakra-ui/react";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
-const profileCard = () => {
-    const user = useSelector((state) => state.auth.user);
+const profileCard = ({ user }) => {
+    const authUser = useSelector((state) => state.auth.user);
     const router = useRouter();
+    const isFollowing = authUser.following.includes(user.user.id);
+    const isAuthUser = user && user.user.id === authUser.user.id;
+
     return (
         <Box position="sticky" top="10px">
             <Center width="100%">
@@ -49,70 +52,99 @@ const profileCard = () => {
                     </Text>
                 </Flex>
             </Box>
+
             <Box px="0.2rem" py="1rem">
-                <Flex direction="column" width="100%">
-                    <Heading fontSize="lg" mb="1rem">
-                        Stories
-                    </Heading>
+                {isAuthUser && (
+                    <Flex direction="column" width="100%">
+                        <Heading fontSize="lg" mb="1rem">
+                            Stories
+                        </Heading>
 
-                    <Flex justify="space-between" w="80%" mb="0.4rem">
-                        <Text
-                            fontSize="sm"
-                            cursor="pointer"
-                            onClick={() => router.push("/story/drafts")}
-                        >
-                            Drafts
-                        </Text>
+                        <Flex justify="space-between" w="80%" mb="0.4rem">
+                            <Text
+                                fontSize="sm"
+                                cursor="pointer"
+                                onClick={() => router.push("/story/drafts")}
+                            >
+                                Drafts
+                            </Text>
 
-                        <Text fontSize="sm" ml="1rem">
-                            {user && user.articles.drafts}
-                        </Text>
+                            <Text fontSize="sm" ml="1rem">
+                                {user && user.articles.drafts}
+                            </Text>
+                        </Flex>
+                        <Flex justify="space-between" w="80%" mb="0.4rem">
+                            <Text
+                                fontSize="sm"
+                                cursor="pointer"
+                                onClick={() => router.push("/story/published")}
+                            >
+                                Published
+                            </Text>
+
+                            <Text fontSize="sm" ml="1rem">
+                                {user && user.articles.published}
+                            </Text>
+                        </Flex>
+                        <Flex justify="space-between" w="80%">
+                            <Text
+                                fontSize="sm"
+                                cursor="pointer"
+                                onClick={() => router.push("/story/drafts")}
+                            >
+                                Trash
+                            </Text>
+
+                            <Text fontSize="sm" ml="1rem">
+                                {user && user.articles.trashed}
+                            </Text>
+                        </Flex>
                     </Flex>
-                    <Flex justify="space-between" w="80%" mb="0.4rem">
-                        <Text
-                            fontSize="sm"
-                            cursor="pointer"
-                            onClick={() => router.push("/story/published")}
-                        >
-                            Published
-                        </Text>
-
-                        <Text fontSize="sm" ml="1rem">
-                            {user && user.articles.published}
-                        </Text>
-                    </Flex>
-                    <Flex justify="space-between" w="80%">
-                        <Text
-                            fontSize="sm"
-                            cursor="pointer"
-                            onClick={() => router.push("/story/drafts")}
-                        >
-                            Trash
-                        </Text>
-
-                        <Text fontSize="sm" ml="1rem">
-                            {user && user.articles.trashed}
-                        </Text>
-                    </Flex>
-                </Flex>
+                )}
                 <Center w="100%" mt="2rem">
-                    <Button
-                        w="80%"
-                        bg="default.dark"
-                        color="default.light"
-                        fontWeight="500"
-                        _hover={{
-                            bg: "#353434",
-                        }}
-                        _active={{
-                            bg: "default.dark",
-                        }}
-                        _focus={{
-                            outline: "none",
-                        }}
-                    >
-                        Edit Profile
-                    </Button>
+                    {isAuthUser ? (
+                        <Button
+                            w="80%"
+                            bg="default.dark"
+                            color="default.light"
+                            fontWeight="500"
+                            _hover={{
+                                bg: "#353434",
+                            }}
+                            _active={{
+                                bg: "default.dark",
+                            }}
+                            _focus={{
+                                outline: "none",
+                            }}
+                        >
+                            Edit Profile
+                        </Button>
+                    ) : (
+                        <Button
+                            w={isFollowing ? "70%" : "60%"}
+                            bg={
+                                !isFollowing ? "secondary.100" : "default.light"
+                            }
+                            color={
+                                !isFollowing ? "default.light" : "secondary.100"
+                            }
+                            border={isFollowing && "1px"}
+                            borderColor={isFollowing && "secondary.100"}
+                            fontWeight="500"
+                            _hover={{
+                                bg: !isFollowing ? "secondary.300" : "#d4e5e2",
+                            }}
+                            _active={{
+                                bg: !isFollowing ? "secondary.300" : "#d4e5e2",
+                            }}
+                            _focus={{
+                                outline: "none",
+                            }}
+                        >
+                            {isFollowing ? "Following" : "Follow"}
+                        </Button>
+                    )}
                 </Center>
             </Box>
         </Box>

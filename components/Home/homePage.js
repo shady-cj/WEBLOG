@@ -6,7 +6,7 @@ import BlogPostCard from "../../subcomponents/HomePage/blogPostCard";
 import { useSelector, useDispatch } from "react-redux";
 import { toggle_popup } from "../../redux/actions/popup";
 
-const homePage = ({ children }) => {
+const HomePage = ({ children }) => {
     const popUp = useSelector((state) => state.popup.state);
     const dispatch = useDispatch();
     const [activeNav, setActiveNav] = useState("all");
@@ -168,4 +168,4 @@ const homePage = ({ children }) => {
     );
 };
 
-export default homePage;
+export default HomePage;

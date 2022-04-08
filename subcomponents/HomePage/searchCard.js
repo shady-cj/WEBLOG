@@ -13,6 +13,7 @@ import {
     Button,
 } from "@chakra-ui/react";
 import { RiSearchLine } from "react-icons/ri";
+import FollowBtn from "./followBtn";
 
 const searchCard = () => {
     return (
@@ -108,15 +109,7 @@ const searchCard = () => {
                                         align="center"
                                         justify="center"
                                     >
-                                        <Button
-                                            size="sm"
-                                            borderRadius="full"
-                                            bg="white"
-                                            border="1px"
-                                            borderColor="neutrals.300"
-                                        >
-                                            Follow
-                                        </Button>
+                                        <FollowBtn following={false} />
                                     </Flex>
                                 </GridItem>
                             </Grid>

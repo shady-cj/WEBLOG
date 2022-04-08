@@ -1,7 +1,7 @@
 import React from "react";
 import HomeWrapper from "../Container/homeWrapper";
 import HomeGrid from "../Container/homeGrid";
-
+import FollowBtn from "../../subcomponents/HomePage/followBtn";
 import {
     Heading,
     Box,
@@ -16,9 +16,11 @@ import {
 import { useSelector } from "react-redux";
 import SubNavTemplate from "../../subcomponents/HomePage/subNavTemplate";
 
-const index = ({ type }) => {
-    const user = useSelector((state) => state.auth.user);
+const Index = ({ type, user, children }) => {
+    const authUser = useSelector((state) => state.auth.user);
     const username = user && user.user.username;
+    const isFollowing = authUser.following.includes(user.user.id);
+    const isAuthUser = user && user.user.id === authUser.user.id;
     const navs = [
         {
             title: "Home",
@@ -44,7 +46,7 @@ const index = ({ type }) => {
     ];
     return (
         <HomeWrapper page="profile">
-            <HomeGrid page="profile">
+            <HomeGrid page="profile" user={user}>
                 <Heading
                     mt={{ lg: "1rem", base: "3rem" }}
                     fontSize={{ base: "xl", lg: "2xl" }}
@@ -57,7 +59,10 @@ const index = ({ type }) => {
                 <Box mt="3rem" display={{ lg: "none", base: "block" }}>
                     <Flex>
                         <Flex flex="1" align="center">
-                            <Avatar name="Erinfolami" mr="1rem" />
+                            <Avatar
+                                name={user && user.user.last_name}
+                                mr="1rem"
+                            />
                             <VStack spacing={2} align="flex-start">
                                 <Heading fontSize="md" fontWeight="700">
                                     {user && user.user.last_name}{" "}
@@ -68,23 +73,28 @@ const index = ({ type }) => {
                                 </Text>
                             </VStack>
                         </Flex>
-                        <Button
-                            bg="default.dark"
-                            color="default.light"
-                            fontWeight="500"
-                            _hover={{
-                                bg: "#353434",
-                            }}
-                            _active={{
-                                bg: "default.dark",
-                            }}
-                            _focus={{
-                                outline: "none",
-                            }}
-                            size="sm"
-                        >
-                            Edit Profile
-                        </Button>
+
+                        {isAuthUser ? (
+                            <Button
+                                bg="default.dark"
+                                color="default.light"
+                                fontWeight="500"
+                                _hover={{
+                                    bg: "#353434",
+                                }}
+                                _active={{
+                                    bg: "default.dark",
+                                }}
+                                _focus={{
+                                    outline: "none",
+                                }}
+                                size="sm"
+                            >
+                                Edit Profile
+                            </Button>
+                        ) : (
+                            <FollowBtn following={isFollowing} />
+                        )}
                     </Flex>
                     <Box width="60%" ml="4rem">
                         <Text
@@ -99,10 +109,11 @@ const index = ({ type }) => {
                 </Box>
                 <Box>
                     <SubNavTemplate active={type} navs={navs} />
+                    {children}
                 </Box>
             </HomeGrid>
         </HomeWrapper>
     );
 };
 
-export default index;
+export default Index;

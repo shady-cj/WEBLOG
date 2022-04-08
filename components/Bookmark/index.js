@@ -75,8 +75,14 @@ const Bookmarks = ({ type }) => {
                 <Box>
                     <SubNavTemplate active={type} navs={navs} />
                     <Box>
-                        {data.map((entry) => {
-                            return <BlogPostCard {...entry} bookmark={true} />;
+                        {data.map((entry, index) => {
+                            return (
+                                <BlogPostCard
+                                    key={index}
+                                    {...entry}
+                                    bookmark={true}
+                                />
+                            );
                         })}
                     </Box>
                 </Box>

@@ -11,7 +11,7 @@ function Home() {
     useEffect(() => {
         const q = router.query.next;
         if (isAuthenticated && q) {
-            router.replace(q);
+            router.replace(`/${q}`);
         }
     }, [isAuthenticated]);
 
