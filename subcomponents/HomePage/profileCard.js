@@ -117,6 +117,7 @@ const profileCard = ({ user }) => {
                             _focus={{
                                 outline: "none",
                             }}
+                            onClick={() => router.push("/profile/edit")}
                         >
                             Edit Profile
                         </Button>

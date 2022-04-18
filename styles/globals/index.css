@@ -9,7 +9,7 @@ a:active {
     border: none !important;
     outline: none !important;
     box-shadow: none !important;
-    color: rgb(252, 252, 252, 0.6);
+    color: rgb(44, 44, 44, 0.2);
 }
 
 .popup-open {

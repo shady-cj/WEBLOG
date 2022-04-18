@@ -15,8 +15,10 @@ import {
 } from "@chakra-ui/react";
 import { useSelector } from "react-redux";
 import SubNavTemplate from "../../subcomponents/HomePage/subNavTemplate";
+import { useRouter } from "next/router";
 
 const Index = ({ type, user, children }) => {
+    const router = useRouter();
     const authUser = useSelector((state) => state.auth.user);
     const username = user && user.user.username;
     const isFollowing = authUser.following.includes(user.user.id);
@@ -62,6 +64,7 @@ const Index = ({ type, user, children }) => {
                             <Avatar
                                 name={user && user.user.last_name}
                                 mr="1rem"
+                                src={user && user.profile_picture}
                             />
                             <VStack spacing={2} align="flex-start">
                                 <Heading fontSize="md" fontWeight="700">
@@ -89,6 +92,7 @@ const Index = ({ type, user, children }) => {
                                     outline: "none",
                                 }}
                                 size="sm"
+                                onClick={() => router.push("/profile/edit")}
                             >
                                 Edit Profile
                             </Button>

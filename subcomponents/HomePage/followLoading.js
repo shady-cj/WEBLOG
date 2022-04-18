@@ -63,7 +63,7 @@ const followLoading = () => {
                         </Text>
                     </Box>
                     <Box
-                        width="15%"
+                        width="12%"
                         height="30px"
                         borderRadius="full"
                         bg="neutrals.200"

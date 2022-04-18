@@ -209,6 +209,7 @@ const extrasPopup = ({ viewport }) => {
                         boxSize="1.2rem"
                         color="neutrals.800"
                         cursor="pointer"
+                        onClick={() => router.push("/profile/edit")}
                     />
                     <Text
                         fontSize="sm"
@@ -216,6 +217,7 @@ const extrasPopup = ({ viewport }) => {
                         fontFamily="Sora"
                         ml="0.6rem"
                         cursor="pointer"
+                        onClick={() => router.push("/profile/edit")}
                     >
                         Settings
                     </Text>
